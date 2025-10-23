@@ -13,30 +13,54 @@
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
-		<header>
-			<nav>
-				<ul>
-					<li>Home</li>
-					<li>About Us</li>
-					<li>Menu</li>
-					<li>Order Now</li>
-					<li>Blog</li>
-					<li>Location</li>
-					<li><img src="#" alt="cart"></li>
-					<li><img src="#" alt="search"></li>
-				</ul>
-			</nav>
+		<header class="main-header">
+			<div class="header-container">
+				<div class="logo">
+					<h2>🍽️ Cuisine</h2>
+				</div>
+				<nav class="main-nav">
+					<ul class="nav-list">
+						<li><a href="#home" class="nav-link">Home</a></li>
+						<li><a href="#about" class="nav-link">About Us</a></li>
+						<li><a href="#menu" class="nav-link">Menu</a></li>
+						<li><a href="#order" class="nav-link">Order Now</a></li>
+						<li><a href="#blog" class="nav-link">Blog</a></li>
+						<li><a href="#location" class="nav-link">Location</a></li>
+					</ul>
+				</nav>
+				<div class="header-actions">
+					<button class="action-btn cart-btn" aria-label="Shopping Cart">
+						<span class="cart-icon">🛒</span>
+					</button>
+					<button class="action-btn search-btn" aria-label="Search">
+						<span class="search-icon">🔍</span>
+					</button>
+				</div>
+			</div>
 		</header>
-		<main>
-			<h1>Welcome To Our Cuisine Restaurant</h1>
-			<form action="">
-				<input type="text">
-			</form>
-			<ul>
-				<li>25.2k</li>
-				<li>62k</li>
-				<li>55k</li>
-			</ul>
+		<main class="hero-section">
+			<div class="hero-content">
+				<h1 class="hero-title">Welcome To Our <span class="highlight">Cuisine</span> Restaurant</h1>
+				<p class="hero-subtitle">Experience the finest flavors crafted with passion and served with love</p>
+				<form class="search-form" action="">
+					<input type="text" placeholder="Search for your favorite dish..." class="search-input">
+					<button type="submit" class="search-button">🔍</button>
+				</form>
+				<div class="stats">
+					<div class="stat-item">
+						<span class="stat-number">25.2k</span>
+						<span class="stat-label">Happy Customers</span>
+					</div>
+					<div class="stat-item">
+						<span class="stat-number">62k</span>
+						<span class="stat-label">Dishes Served</span>
+					</div>
+					<div class="stat-item">
+						<span class="stat-number">55k</span>
+						<span class="stat-label">Reviews</span>
+					</div>
+				</div>
+			</div>
 		</main>
 		<section>
 			<span>About Us</span>
@@ -50,8 +74,10 @@
 			<h3>Our Specialty Cuisine</h3>
 			<ul>
 				<li><a href="#">Breakfast</a></li>
-				<li><a href="#">Lunch</a></li>
-				<li><a href="#">Dinner</a></li>
+				<li><a href="#">Breakfast</a></li>
+				<li><a href="#">Breakfast</a></li>
+				<li><a href="#">Breakfast</a></li>
+				<li><a href="#">Breakfast</a></li>
 			</ul>
 			<img src="#" alt="food">
 			<img src="#" alt="food">
