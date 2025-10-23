@@ -182,8 +182,7 @@ body {
 }
 
 .hero-content {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 800px;
   padding: 2rem;
   position: relative;
   z-index: 2;
@@ -311,11 +310,7 @@ body {
   }
 }
 
-Main {
-  float: left;
-  clear: both;
-  width: 50%;
-}
+/* Removed problematic main width constraint */
 
 form + ul > li {
   display: inline-block;
