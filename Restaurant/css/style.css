@@ -572,6 +572,73 @@ body {
   background: linear-gradient(45deg, #f39c12, #e67e22);
 }
 
+/* Booking Form */
+.booking-form-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#bookingForm label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+#bookingForm input,
+#bookingForm select,
+#bookingForm textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  outline: none;
+}
+
+#bookingForm input::placeholder,
+#bookingForm textarea::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-field.full {
+  grid-column: 1 / -1;
+}
+
+.form-actions {
+  margin-top: 1rem;
+  text-align: right;
+}
+
+.booking-message {
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.booking-message.error {
+  color: #ffdddd;
+}
+
+.booking-message.success {
+  color: #d4ffda;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Testimonial Section Styles */
 .testimonial-section {
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
