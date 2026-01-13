@@ -3,9 +3,7 @@ import Hero from "@/components/sections/Hero";
 import Programs from "@/components/sections/Programs";
 import Schedule from "@/components/sections/Schedule";
 import Coaches from "@/components/sections/Coaches";
-import Testimonial from "@/components/sections/Testimonial";
 import Pricing from "@/components/sections/Pricing";
-import Facility from "@/components/sections/Facility";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
 
@@ -18,9 +16,7 @@ export default function Home() {
         <Programs />
         <Schedule />
         <Coaches />
-        <Testimonial />
         <Pricing />
-        <Facility />
         <Contact />
       </main>
       <Footer />

@@ -1,0 +1,45 @@
+import { forwardRef, type InputHTMLAttributes } from "react";
+import { cn } from "@/lib/utils";
+
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  label?: string;
+  error?: string;
+}
+
+const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ className, label, error, id, ...props }, ref) => {
+    const inputId = id || label?.toLowerCase().replace(/\s+/g, "-");
+
+    return (
+      <div className="w-full">
+        {label && (
+          <label
+            htmlFor={inputId}
+            className="mb-1.5 block text-sm font-medium text-[--color-text]"
+          >
+            {label}
+            {props.required && <span className="ml-1 text-[--color-primary]">*</span>}
+          </label>
+        )}
+        <input
+          ref={ref}
+          id={inputId}
+          className={cn(
+            "w-full rounded-md border border-[--color-border] bg-[--color-card] px-3 py-2 text-sm text-[--color-text] transition-colors",
+            "focus:border-[--color-primary] focus:outline-none focus:ring-2 focus:ring-[--color-primary] focus:ring-offset-0",
+            "disabled:cursor-not-allowed disabled:opacity-50",
+            "placeholder:text-[--color-muted]",
+            error && "border-red-500 focus:border-red-500 focus:ring-red-500",
+            className
+          )}
+          {...props}
+        />
+        {error && <p className="mt-1 text-sm text-red-400">{error}</p>}
+      </div>
+    );
+  }
+);
+
+Input.displayName = "Input";
+
+export default Input;
