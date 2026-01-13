@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  phone     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  bookings     ClassBooking[]
+  memberships  Membership[]
+}
+
+model Class {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  coachName   String
+  startTime   String
+  endTime     String
+  dayOfWeek   String
+  maxCapacity Int      @default(12)
+  category    String   // "Strength & Power", "Conditioning Lab", "Hybrid Athlete", etc.
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  bookings ClassBooking[]
+}
+
+model ClassBooking {
+  id        String   @id @default(cuid())
+  userId    String
+  classId   String
+  date      String   // Format: YYYY-MM-DD
+  status    String   @default("confirmed") // "confirmed", "cancelled", "completed"
+  notes     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  class Class @relation(fields: [classId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, classId, date])
+  @@index([userId])
+  @@index([classId])
+  @@index([date])
+}
+
+model Membership {
+  id            String   @id @default(cuid())
+  userId        String
+  planName      String   // "Hybrid Unlimited", "Strength Club", "Open Gym"
+  price         Int      // Price in cents
+  status        String   @default("active") // "active", "cancelled", "paused"
+  startDate     DateTime
+  endDate       DateTime?
+  billingCycle  String   @default("monthly") // "monthly", "annual"
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+}
+
+model ContactSubmission {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  goal      String
+  message   String?
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}
