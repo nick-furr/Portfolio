@@ -4,14 +4,29 @@ A professional portfolio website showcasing web development projects and service
 
 ## Overview
 
-This portfolio demonstrates modern web development skills through three featured projects:
+This portfolio demonstrates modern web development skills through four featured projects:
+- **Restaurant React App** - ⭐ **NEW!** Modern Next.js application with TypeScript, API routes, and testing
 - **Restaurant Website** - Interactive booking system with form validation
 - **Hair Salon Website** - Modern landing page with service showcase
 - **Gym Website** - Fitness facility site with responsive design
 
 ## Projects
 
-### 1. Restaurant Website
+### 1. Restaurant React App ⭐ NEW!
+- **Features**: Full-stack booking system, menu filtering, form validation, API backend
+- **Tech Stack**: Next.js 16, TypeScript, Tailwind CSS, React Hook Form, Zod, Vitest
+- **Highlights**:
+  - Server-side rendering (SSR) for better SEO
+  - TypeScript for type safety
+  - API routes for backend functionality
+  - Comprehensive test coverage
+  - Production-ready build
+  - Professional code quality tools (ESLint, Prettier)
+- **Location**: `restaurant-react/`
+- **Run**: `cd restaurant-react && npm install && npm run dev`
+- **Documentation**: See [restaurant-react/README.md](restaurant-react/README.md)
+
+### 2. Restaurant Website (Original)
 - **Features**: Table booking system, menu categories, operating hours
 - **Tech Stack**: HTML5, CSS3, Vanilla JavaScript
 - **Highlights**:
@@ -19,14 +34,14 @@ This portfolio demonstrates modern web development skills through three featured
   - localStorage-based booking management
   - Responsive image gallery
 
-### 2. Hair Salon (Ayesha)
+### 3. Hair Salon (Ayesha)
 - **Features**: Service showcase, promotional offers, lookbook gallery
 - **Tech Stack**: HTML5, CSS3
 - **Highlights**:
   - Clean, modern design
   - Service-focused layout
 
-### 3. Gym (Ironclad Fitness)
+### 4. Gym (Ironclad Fitness)
 - **Features**: Program details, class schedules, membership pricing
 - **Tech Stack**: HTML5, CSS3, JavaScript
 - **Highlights**:
@@ -56,7 +71,15 @@ My Portfolio/
 │   ├── js/                # Main portfolio scripts
 │   └── webfonts/          # Font Awesome icons
 ├── images/                # Portfolio images
-├── Restaurant/            # Restaurant project
+├── restaurant-react/      # ⭐ Modern React app (Next.js + TypeScript)
+│   ├── src/
+│   │   ├── app/          # Next.js pages and API routes
+│   │   ├── components/   # Reusable React components
+│   │   ├── lib/          # Utilities and validations
+│   │   └── types/        # TypeScript definitions
+│   ├── package.json
+│   └── README.md
+├── Restaurant/            # Original vanilla JS project
 │   ├── index.html
 │   ├── css/
 │   ├── js/
@@ -81,6 +104,15 @@ My Portfolio/
 
 ## Technologies Used
 
+### Modern Stack (Restaurant React)
+- **Next.js 16** - React framework with SSR
+- **TypeScript** - Type-safe JavaScript
+- **Tailwind CSS** - Utility-first CSS
+- **React Hook Form** - Form state management
+- **Zod** - Schema validation
+- **Vitest** - Unit testing framework
+
+### Traditional Stack (Other Projects)
 - HTML5
 - CSS3 (Flexbox, Grid)
 - Vanilla JavaScript (ES6+)
