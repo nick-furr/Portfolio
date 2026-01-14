@@ -1,0 +1,25 @@
+<svg width="1920" height="800" viewBox="0 0 1920 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F8F4EF;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#E8D5C4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:0.4" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="800" fill="url(#heroGrad)"/>
+
+  <!-- Abstract flowing hair strands -->
+  <path d="M0 300 Q400 200 800 300 T1600 300 L1920 300 L1920 800 L0 800 Z" fill="#E8D5C4" opacity="0.3"/>
+  <path d="M0 400 Q500 350 1000 400 T2000 400 L1920 800 L0 800 Z" fill="#D4AF37" opacity="0.1"/>
+
+  <!-- Decorative circles -->
+  <circle cx="200" cy="150" r="80" fill="#D4AF37" opacity="0.1"/>
+  <circle cx="1700" cy="200" r="120" fill="#C9A063" opacity="0.15"/>
+  <circle cx="900" cy="600" r="60" fill="#D4AF37" opacity="0.08"/>
+
+  <!-- Subtle sparkles -->
+  <circle cx="400" cy="250" r="4" fill="#D4AF37" opacity="0.5"/>
+  <circle cx="1200" cy="180" r="5" fill="#D4AF37" opacity="0.4"/>
+  <circle cx="1500" cy="450" r="3" fill="#D4AF37" opacity="0.6"/>
+</svg>

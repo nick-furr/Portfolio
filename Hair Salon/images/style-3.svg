@@ -1,0 +1,10 @@
+<svg width="400" height="450" viewBox="0 0 400 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="450" fill="#E8D5C4"/>
+  <circle cx="200" cy="125" r="68" fill="#6B4423"/>
+  <path d="M265 110 Q270 80 265 60 Q255 40 235 35 L230 120 M135 110 Q130 80 135 60 Q145 40 165 35 L170 120" fill="#3D2817"/>
+  <ellipse cx="200" cy="100" rx="65" ry="40" fill="#3D2817"/>
+  <path d="M135 100 L135 250 Q135 280 160 290" stroke="#3D2817" stroke-width="8" fill="none"/>
+  <path d="M265 100 L265 250 Q265 280 240 290" stroke="#3D2817" stroke-width="8" fill="none"/>
+  <ellipse cx="200" cy="265" rx="100" ry="130" fill="#8B6F47"/>
+  <text x="200" y="420" font-family="Arial, sans-serif" font-size="16" fill="#8B6F47" text-anchor="middle" font-weight="600">LONG WAVES</text>
+</svg>

@@ -1,0 +1,11 @@
+<svg width="400" height="450" viewBox="0 0 400 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="450" fill="#F0E4D7"/>
+  <circle cx="200" cy="125" r="62" fill="#6B4423"/>
+  <circle cx="200" cy="85" r="50" fill="#2C1810"/>
+  <path d="M150 85 Q145 110 155 125 M250 85 Q255 110 245 125" stroke="#2C1810" stroke-width="6" fill="none"/>
+  <ellipse cx="180" cy="110" rx="15" ry="25" fill="#2C1810"/>
+  <ellipse cx="220" cy="110" rx="15" ry="25" fill="#2C1810"/>
+  <ellipse cx="200" cy="270" rx="100" ry="130" fill="#8B6F47"/>
+  <circle cx="120" cy="350" r="20" fill="#D4AF37" opacity="0.2"/>
+  <text x="200" y="420" font-family="Arial, sans-serif" font-size="16" fill="#8B6F47" text-anchor="middle" font-weight="600">PIXIE CUT</text>
+</svg>

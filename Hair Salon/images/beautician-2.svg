@@ -1,0 +1,32 @@
+<svg width="400" height="500" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="500" fill="url(#grad2)"/>
+  <defs>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5E6D3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C9A063;stop-opacity:0.3" />
+    </linearGradient>
+  </defs>
+
+  <!-- Person silhouette -->
+  <circle cx="200" cy="140" r="60" fill="#6B4423"/>
+  <ellipse cx="200" cy="280" rx="100" ry="130" fill="#8B6F47"/>
+
+  <!-- Wavy hair -->
+  <path d="M140 100 Q130 70 145 50 Q165 35 185 45 Q200 35 215 45 Q235 35 255 50 Q270 70 260 100 L250 130 Q240 110 230 120 Q220 110 210 120 Q200 110 190 120 Q180 110 170 120 Q160 110 150 130 Z" fill="#3D2817"/>
+
+  <!-- Comb icon -->
+  <g transform="translate(300, 410)">
+    <rect x="0" y="0" width="50" height="8" rx="2" fill="#D4AF37"/>
+    <rect x="5" y="8" width="4" height="25" fill="#D4AF37"/>
+    <rect x="13" y="8" width="4" height="25" fill="#D4AF37"/>
+    <rect x="21" y="8" width="4" height="25" fill="#D4AF37"/>
+    <rect x="29" y="8" width="4" height="25" fill="#D4AF37"/>
+    <rect x="37" y="8" width="4" height="25" fill="#D4AF37"/>
+    <rect x="45" y="8" width="4" height="25" fill="#D4AF37"/>
+  </g>
+
+  <!-- Decorative stars -->
+  <path d="M70 80 L75 90 L85 90 L77 96 L80 106 L70 100 L60 106 L63 96 L55 90 L65 90 Z" fill="#D4AF37" opacity="0.4"/>
+  <path d="M330 450 L333 456 L340 456 L335 460 L337 467 L330 463 L323 467 L325 460 L320 456 L327 456 Z" fill="#D4AF37" opacity="0.4"/>
+</svg>

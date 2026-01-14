@@ -1,0 +1,7 @@
+<svg width="400" height="450" viewBox="0 0 400 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="450" fill="#F5E6D3"/>
+  <circle cx="200" cy="120" r="70" fill="#8B6F47"/>
+  <path d="M130 100 Q120 60 140 40 Q170 20 200 25 Q230 20 260 40 Q280 60 270 100 Q265 120 255 130 Q240 115 225 125 Q210 115 200 125 Q190 115 175 125 Q160 115 145 130 Q135 120 130 100" fill="#2C1810"/>
+  <ellipse cx="200" cy="260" rx="110" ry="140" fill="#A0826D"/>
+  <text x="200" y="420" font-family="Arial, sans-serif" font-size="16" fill="#8B6F47" text-anchor="middle" font-weight="600">BALAYAGE</text>
+</svg>
