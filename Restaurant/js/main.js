@@ -1,4 +1,54 @@
 document.addEventListener('DOMContentLoaded', function () {
+  // Menu category switching
+  const categoryLinks = document.querySelectorAll('.category-link');
+
+  categoryLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      // Remove active class from all links
+      categoryLinks.forEach(l => l.classList.remove('active'));
+
+      // Add active class to clicked link
+      this.classList.add('active');
+
+      // Get category
+      const category = this.getAttribute('data-category');
+
+      // For now, just show the appetizers (in a real app, you'd have multiple menu sections)
+      console.log('Switching to category:', category);
+    });
+  });
+
+  // Smooth scroll for navigation links
+  const navLinks = document.querySelectorAll('a[href^="#"]');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+
+      // Skip if it's just "#"
+      if (href === '#') return;
+
+      e.preventDefault();
+
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        const headerOffset = 90;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // Booking form
   const form = document.getElementById('bookingForm');
   if (!form) return;
 
@@ -11,8 +61,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const notesInput = document.getElementById('notes');
   const messageEl = document.getElementById('bookingMessage');
 
-  const OPEN_HOUR = 9; // 09:00
-  const CLOSE_HOUR = 22; // 22:00
+  const OPEN_HOUR = 17; // 5:00 PM
+  const CLOSE_HOUR = 23; // 11:00 PM
   const MAX_TABLES_PER_SLOT = 10;
 
   // Helpers
