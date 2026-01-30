@@ -1,16 +1,63 @@
-# React + Vite
+# La Maison - Fine Dining Restaurant
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React-based restaurant website showcasing fine dining experience with interactive features.
 
-Currently, two official plugins are available:
+**Live Demo:** [nickfurr.com/Restaurant](https://nickfurr.com/Restaurant/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- **Interactive Menu** - Tab-based menu navigation with React state management
+- **Table Booking System** - Form with validation, date/time constraints, and localStorage persistence
+- **Responsive Design** - Mobile-friendly layout with elegant animations
+- **Modern Stack** - Built with React 18 + Vite
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+| Technology | Purpose |
+|------------|---------|
+| React 18 | UI Components |
+| Vite | Build tool & dev server |
+| Vanilla CSS | Styling (CSS variables, animations) |
+| localStorage | Booking data persistence |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project Structure
+
+```
+Restaurant/
+├── src/
+│   ├── components/
+│   │   ├── Header.jsx       # Navigation with smooth scroll
+│   │   ├── Hero.jsx         # Landing section
+│   │   ├── About.jsx        # Restaurant story
+│   │   ├── Menu.jsx         # Interactive menu tabs
+│   │   ├── BookingForm.jsx  # Reservation form with validation
+│   │   ├── Reservations.jsx # Booking section
+│   │   ├── Testimonials.jsx # Customer reviews
+│   │   ├── PrivateDining.jsx
+│   │   └── Footer.jsx
+│   ├── App.jsx
+│   └── App.css              # All styles
+├── index.html
+└── vite.config.js
+```
+
+## Development
+
+```bash
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+## Deployment
+
+Built files are in `/assets` folder. Push to GitHub and Netlify auto-deploys.
+
+---
+
+*Part of [Nick Furr's Portfolio](https://nickfurr.com)*
