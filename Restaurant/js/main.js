@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   // Menu category switching
   const categoryLinks = document.querySelectorAll('.category-link');
+  const menuSections = document.querySelectorAll('.menu-items');
 
   categoryLinks.forEach(link => {
     link.addEventListener('click', function(e) {
@@ -15,8 +16,14 @@ document.addEventListener('DOMContentLoaded', function () {
       // Get category
       const category = this.getAttribute('data-category');
 
-      // For now, just show the appetizers (in a real app, you'd have multiple menu sections)
-      console.log('Switching to category:', category);
+      // Hide all menu sections
+      menuSections.forEach(section => section.classList.remove('active'));
+
+      // Show the selected category section
+      const targetSection = document.querySelector(`.menu-items[data-category="${category}"]`);
+      if (targetSection) {
+        targetSection.classList.add('active');
+      }
     });
   });
 

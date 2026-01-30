@@ -491,9 +491,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .menu-items {
-  display: grid;
+  display: none;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 3rem;
+}
+
+.menu-items.active {
+  display: grid;
 }
 
 .menu-item {
@@ -541,6 +545,93 @@ h1, h2, h3, h4, h5, h6 {
 .appetizer-4 {
   background: linear-gradient(135deg, rgba(42, 42, 42, 0.9), rgba(26, 26, 26, 0.9)),
               url('data:image/svg+xml,<svg width="300" height="250" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="250" fill="%231a1a1a"/><text x="150" y="125" font-family="serif" font-size="80" fill="%23D4AF37" text-anchor="middle" dominant-baseline="middle">🦪</text></svg>');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Main Courses */
+.main-1 {
+  background: linear-gradient(135deg, rgba(42, 42, 42, 0.9), rgba(26, 26, 26, 0.9)),
+              url('data:image/svg+xml,<svg width="300" height="250" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="250" fill="%231a1a1a"/><text x="150" y="125" font-family="serif" font-size="80" fill="%23D4AF37" text-anchor="middle" dominant-baseline="middle">🥩</text></svg>');
+  background-size: cover;
+  background-position: center;
+}
+
+.main-2 {
+  background: linear-gradient(135deg, rgba(42, 42, 42, 0.9), rgba(26, 26, 26, 0.9)),
+              url('data:image/svg+xml,<svg width="300" height="250" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="250" fill="%231a1a1a"/><text x="150" y="125" font-family="serif" font-size="80" fill="%23D4AF37" text-anchor="middle" dominant-baseline="middle">🦆</text></svg>');
+  background-size: cover;
+  background-position: center;
+}
+
+.main-3 {
+  background: linear-gradient(135deg, rgba(42, 42, 42, 0.9), rgba(26, 26, 26, 0.9)),
+              url('data:image/svg+xml,<svg width="300" height="250" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="250" fill="%231a1a1a"/><text x="150" y="125" font-family="serif" font-size="80" fill="%23D4AF37" text-anchor="middle" dominant-baseline="middle">🦞</text></svg>');
+  background-size: cover;
+  background-position: center;
+}
+
+.main-4 {
+  background: linear-gradient(135deg, rgba(42, 42, 42, 0.9), rgba(26, 26, 26, 0.9)),
+              url('data:image/svg+xml,<svg width="300" height="250" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="250" fill="%231a1a1a"/><text x="150" y="125" font-family="serif" font-size="80" fill="%23D4AF37" text-anchor="middle" dominant-baseline="middle">🍖</text></svg>');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Desserts */
+.dessert-1 {
+  background: linear-gradient(135deg, rgba(42, 42, 42, 0.9), rgba(26, 26, 26, 0.9)),
+              url('data:image/svg+xml,<svg width="300" height="250" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="250" fill="%231a1a1a"/><text x="150" y="125" font-family="serif" font-size="80" fill="%23D4AF37" text-anchor="middle" dominant-baseline="middle">🍫</text></svg>');
+  background-size: cover;
+  background-position: center;
+}
+
+.dessert-2 {
+  background: linear-gradient(135deg, rgba(42, 42, 42, 0.9), rgba(26, 26, 26, 0.9)),
+              url('data:image/svg+xml,<svg width="300" height="250" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="250" fill="%231a1a1a"/><text x="150" y="125" font-family="serif" font-size="80" fill="%23D4AF37" text-anchor="middle" dominant-baseline="middle">🍮</text></svg>');
+  background-size: cover;
+  background-position: center;
+}
+
+.dessert-3 {
+  background: linear-gradient(135deg, rgba(42, 42, 42, 0.9), rgba(26, 26, 26, 0.9)),
+              url('data:image/svg+xml,<svg width="300" height="250" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="250" fill="%231a1a1a"/><text x="150" y="125" font-family="serif" font-size="80" fill="%23D4AF37" text-anchor="middle" dominant-baseline="middle">🍎</text></svg>');
+  background-size: cover;
+  background-position: center;
+}
+
+.dessert-4 {
+  background: linear-gradient(135deg, rgba(42, 42, 42, 0.9), rgba(26, 26, 26, 0.9)),
+              url('data:image/svg+xml,<svg width="300" height="250" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="250" fill="%231a1a1a"/><text x="150" y="125" font-family="serif" font-size="80" fill="%23D4AF37" text-anchor="middle" dominant-baseline="middle">🧀</text></svg>');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Wine Selection */
+.wine-1 {
+  background: linear-gradient(135deg, rgba(42, 42, 42, 0.9), rgba(26, 26, 26, 0.9)),
+              url('data:image/svg+xml,<svg width="300" height="250" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="250" fill="%231a1a1a"/><text x="150" y="125" font-family="serif" font-size="80" fill="%23D4AF37" text-anchor="middle" dominant-baseline="middle">🍷</text></svg>');
+  background-size: cover;
+  background-position: center;
+}
+
+.wine-2 {
+  background: linear-gradient(135deg, rgba(42, 42, 42, 0.9), rgba(26, 26, 26, 0.9)),
+              url('data:image/svg+xml,<svg width="300" height="250" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="250" fill="%231a1a1a"/><text x="150" y="125" font-family="serif" font-size="80" fill="%23D4AF37" text-anchor="middle" dominant-baseline="middle">🍾</text></svg>');
+  background-size: cover;
+  background-position: center;
+}
+
+.wine-3 {
+  background: linear-gradient(135deg, rgba(42, 42, 42, 0.9), rgba(26, 26, 26, 0.9)),
+              url('data:image/svg+xml,<svg width="300" height="250" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="250" fill="%231a1a1a"/><text x="150" y="125" font-family="serif" font-size="80" fill="%23D4AF37" text-anchor="middle" dominant-baseline="middle">🍇</text></svg>');
+  background-size: cover;
+  background-position: center;
+}
+
+.wine-4 {
+  background: linear-gradient(135deg, rgba(42, 42, 42, 0.9), rgba(26, 26, 26, 0.9)),
+              url('data:image/svg+xml,<svg width="300" height="250" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="250" fill="%231a1a1a"/><text x="150" y="125" font-family="serif" font-size="80" fill="%23D4AF37" text-anchor="middle" dominant-baseline="middle">🥂</text></svg>');
   background-size: cover;
   background-position: center;
 }
