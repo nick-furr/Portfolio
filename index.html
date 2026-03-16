@@ -1,519 +1,1392 @@
-<!DOCTYPE HTML>
-<!--
-	Photon by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>Nick Furr</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<noscript>
-		<link rel="stylesheet" href="assets/css/noscript.css" />
-	</noscript>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nick Furr — Engineer. Builder. Developer.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Archivo:wght@300;400;500;600;700;900&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #090c10;
+    --bg2: #0d1117;
+    --teal: #00d4aa;
+    --teal-dim: rgba(0,212,170,0.12);
+    --teal-glow: rgba(0,212,170,0.35);
+    --blue: #1d6fa4;
+    --fog: #a8b8c8;
+    --white: #e8edf2;
+    --muted: #5a6a7a;
+    --grid: rgba(168,184,200,0.06);
+    --line: rgba(168,184,200,0.12);
+    --line-strong: rgba(0,212,170,0.25);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Archivo', sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    position: fixed;
+    width: 12px; height: 12px;
+    background: var(--teal);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%,-50%);
+    transition: transform 0.1s, width 0.2s, height 0.2s, opacity 0.2s;
+    mix-blend-mode: screen;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 36px; height: 36px;
+    border: 1px solid var(--teal-glow);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%,-50%);
+    transition: transform 0.15s ease-out, width 0.2s, height 0.2s;
+  }
+
+  /* ── ENGINEERING GRID BACKGROUND ── */
+  .eng-grid {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+      linear-gradient(rgba(0,212,170,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,170,0.025) 1px, transparent 1px);
+    background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
+  }
+
+  /* ── ANIMATED BLUEPRINT LINES ── */
+  .blueprint-lines {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .bp-line {
+    position: absolute;
+    background: linear-gradient(90deg, transparent, var(--teal-glow), transparent);
+    height: 1px;
+    width: 60%;
+    opacity: 0;
+    animation: scanline 8s linear infinite;
+  }
+  .bp-line:nth-child(1) { top: 18%; animation-delay: 0s; }
+  .bp-line:nth-child(2) { top: 42%; animation-delay: 2.5s; width: 40%; left: 20%; }
+  .bp-line:nth-child(3) { top: 67%; animation-delay: 5s; width: 50%; left: 10%; }
+  .bp-line:nth-child(4) { top: 85%; animation-delay: 7s; width: 30%; left: 35%; }
+
+  @keyframes scanline {
+    0% { opacity:0; transform: translateX(-100%); }
+    20% { opacity:1; }
+    80% { opacity:1; }
+    100% { opacity:0; transform: translateX(200%); }
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 64px;
+    border-bottom: 1px solid var(--line);
+    background: rgba(9,12,16,0.85);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--teal); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--fog);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+
+  /* ── TITLE BLOCK (engineering corner detail) ── */
+  .title-block {
+    position: fixed;
+    bottom: 24px; right: 24px;
+    z-index: 90;
+    border: 1px solid var(--line-strong);
+    padding: 10px 14px;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    line-height: 1.8;
+    background: rgba(9,12,16,0.7);
+    backdrop-filter: blur(8px);
+  }
+  .title-block .tb-label { color: var(--teal); font-weight: 500; }
+
+  /* ── SECTIONS ── */
+  section { position: relative; z-index: 1; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 48px 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Bay Bridge SVG background */
+  .bridge-bg {
+    position: absolute;
+    right: -40px; bottom: 0;
+    width: 65%;
+    opacity: 0.06;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Teal glow orb */
+  .hero-orb {
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(0,212,170,0.08) 0%, transparent 70%);
+    bottom: -100px; right: 5%;
+    pointer-events: none;
+    animation: orb-pulse 6s ease-in-out infinite;
+  }
+  @keyframes orb-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+  }
+
+  .hero-content { position: relative; z-index: 2; max-width: 780px; }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    animation: fade-up 0.8s forwards 0.3s;
+  }
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 40px; height: 1px;
+    background: var(--teal);
+  }
+
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 10vw, 140px);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    color: var(--white);
+    opacity: 0;
+    animation: fade-up 0.8s forwards 0.5s;
+  }
+  .hero-name .accent { color: var(--teal); }
+
+  .hero-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--teal), transparent);
+    margin: 28px 0;
+    opacity: 0;
+    animation: fade-up 0.8s forwards 0.7s;
+  }
+
+  .hero-hook {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--fog);
+    line-height: 1.6;
+    max-width: 560px;
+    opacity: 0;
+    animation: fade-up 0.8s forwards 0.9s;
+  }
+  .hero-hook strong { color: var(--white); font-weight: 600; }
+
+  .hero-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 16px;
+    letter-spacing: 1px;
+    opacity: 0;
+    animation: fade-up 0.8s forwards 1.1s;
+  }
+  .hero-sub span { color: var(--teal); }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    margin-top: 40px;
+    opacity: 0;
+    animation: fade-up 0.8s forwards 1.3s;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: var(--teal);
+    color: var(--bg);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    border: none;
+    cursor: none;
+    transition: all 0.2s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+  }
+  .btn-primary:hover {
+    background: #00ffe6;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,212,170,0.3);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: transparent;
+    color: var(--fog);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-decoration: none;
+    border: 1px solid var(--line);
+    cursor: none;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+  }
+
+  /* Coordinate annotations */
+  .coord {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    position: absolute;
+  }
+  .coord-tl { top: 88px; left: 24px; }
+  .coord-br { bottom: 32px; left: 24px; }
+
+  @keyframes fade-up {
+    from { opacity:0; transform: translateY(20px); }
+    to { opacity:1; transform: translateY(0); }
+  }
+
+  /* ── STORY BANNER ── */
+  .story-banner {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 20px 80px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    background: linear-gradient(90deg, rgba(0,212,170,0.04), transparent);
+    overflow: hidden;
+  }
+  .story-banner .marker {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--teal);
+    letter-spacing: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .story-banner .story-text {
+    font-size: 14px;
+    color: var(--fog);
+    font-weight: 300;
+    letter-spacing: 0.3px;
+  }
+  .story-banner .story-text strong { color: var(--white); font-weight: 600; }
+
+  /* ── SECTION COMMON ── */
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 48px;
+  }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 30px; height: 1px;
+    background: var(--teal);
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 6vw, 72px);
+    line-height: 1;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+  .section-title .accent { color: var(--teal); }
+
+  /* ── ABOUT ── */
+  #about { background: var(--bg2); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    margin-top: 48px;
+  }
+  .about-body {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--fog);
+    font-weight: 300;
+  }
+  .about-body p + p { margin-top: 20px; }
+  .about-body strong { color: var(--white); font-weight: 600; }
+
+  .about-specs {
+    border: 1px solid var(--line);
+    padding: 0;
+    position: relative;
+  }
+  .about-specs::before {
+    content: 'PROJECT SPECS';
+    position: absolute;
+    top: -10px; left: 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--teal);
+    background: var(--bg2);
+    padding: 0 8px;
+  }
+  .spec-row {
+    display: flex;
+    border-bottom: 1px solid var(--line);
+    padding: 14px 20px;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .spec-row:last-child { border-bottom: none; }
+  .spec-key {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    text-transform: uppercase;
+    min-width: 100px;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .spec-val {
+    font-size: 13px;
+    color: var(--white);
+    line-height: 1.5;
+  }
+  .spec-val .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    background: var(--teal-dim);
+    border: 1px solid var(--line-strong);
+    color: var(--teal);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin: 2px 3px 2px 0;
+  }
+
+
+  /* ── TIER LABELS ── */
+  .tier-label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .tier-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--teal);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .tier-title {
+    font-family: 'Archivo', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+  .tier-line {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  /* ── PROCESS GRID ── */
+  .process-grid {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .process-step {
+    flex: 1;
+    padding: 24px 20px;
+    border: 1px solid var(--line);
+    background: var(--bg2);
+    transition: border-color 0.3s;
+  }
+  .process-step:hover { border-color: var(--line-strong); }
+  .process-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: rgba(0,212,170,0.15);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .process-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+  }
+  .process-desc {
+    font-size: 12px;
+    color: var(--fog);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  .process-arrow {
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+    color: var(--teal);
+    font-size: 18px;
+    margin-top: 24px;
+    flex-shrink: 0;
+  }
+
+  /* ── SERVICES ── */
+  #services { background: var(--bg); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--line);
+    margin-top: 56px;
+    border: 1px solid var(--line);
+  }
+  .service-card {
+    background: var(--bg);
+    padding: 36px 32px;
+    position: relative;
+    transition: background 0.3s;
+  }
+  .service-card:hover { background: rgba(0,212,170,0.03); }
+  .service-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    color: rgba(0,212,170,0.1);
+    line-height: 1;
+    margin-bottom: 8px;
+    transition: color 0.3s;
+  }
+  .service-card:hover .service-num { color: rgba(0,212,170,0.2); }
+  .service-title {
+    font-family: 'Archivo', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+    letter-spacing: 0.3px;
+  }
+  .service-desc {
+    font-size: 14px;
+    color: var(--fog);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  .service-corner {
+    position: absolute;
+    top: 16px; right: 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  /* ── AUTOMATION ── */
+  #automation { background: var(--bg2); }
+  .auto-intro {
+    max-width: 600px;
+    font-size: 16px;
+    color: var(--fog);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-top: 24px;
+    margin-bottom: 56px;
+  }
+  .auto-intro strong { color: var(--white); font-weight: 600; }
+  .auto-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .auto-card {
+    border: 1px solid var(--line);
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    background: var(--bg);
+  }
+  .auto-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 0;
+    background: var(--teal);
+    transition: height 0.4s;
+  }
+  .auto-card:hover::before { height: 100%; }
+  .auto-card:hover {
+    border-color: var(--line-strong);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+  }
+  .auto-icon {
+    font-size: 24px;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .auto-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .auto-desc {
+    font-size: 13px;
+    color: var(--fog);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  .auto-stack {
+    margin-top: 48px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .auto-stack .stack-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-right: 8px;
+  }
+  .stack-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--fog);
+    padding: 5px 12px;
+    border: 1px solid var(--line);
+    letter-spacing: 1px;
+  }
+
+
+
+  /* ── PROJECT ACTION BUTTONS ── */
+  .plan-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+  }
+  .plan-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: none;
+    flex: 1;
+    text-align: center;
+  }
+  .plan-btn-disabled {
+    color: var(--muted);
+    border: 1px solid var(--line);
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  .plan-btn-primary {
+    background: var(--teal);
+    color: var(--bg);
+    border: 1px solid var(--teal);
+    font-weight: 500;
+  }
+  .plan-btn-primary:hover {
+    background: #00ffe6;
+    box-shadow: 0 4px 20px rgba(0,212,170,0.3);
+  }
+  .plan-btn-ghost {
+    color: var(--fog);
+    border: 1px solid var(--line);
+  }
+  .plan-btn-ghost:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+  }
+
+  /* ── PROJECT SERVICE BADGE ── */
+  .plan-service-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--teal);
+    background: var(--teal-dim);
+    border: 1px solid var(--line-strong);
+    padding: 4px 10px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .projects-intro {
+    font-size: 15px;
+    color: var(--fog);
+    font-weight: 300;
+    max-width: 600px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--bg); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+  }
+  .project-card {
+    border: 1px solid var(--line);
+    background: var(--bg2);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    cursor: none;
+  }
+  .project-card:hover {
+    border-color: var(--line-strong);
+    transform: translateY(-6px);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 0 0 1px var(--line-strong);
+  }
+  /* plan sheet header */
+  .plan-header {
+    border-bottom: 1px solid var(--line);
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,212,170,0.03);
+  }
+  .plan-sheet-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--teal);
+    letter-spacing: 2px;
+  }
+  .plan-revision {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+  /* project visual placeholder */
+  .project-visual {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(0,212,170,0.04), rgba(29,111,164,0.06));
+  }
+  .project-visual .pv-icon {
+    font-size: 48px;
+    opacity: 0.4;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .project-card:hover .pv-icon { transform: scale(1.1); opacity: 0.6; }
+  /* title block bottom */
+  .plan-body { padding: 20px 20px 24px; }
+  .plan-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .plan-desc {
+    font-size: 13px;
+    color: var(--fog);
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 16px;
+  }
+  .plan-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .plan-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--teal);
+    background: var(--teal-dim);
+    border: 1px solid var(--line-strong);
+    padding: 3px 8px;
+    text-transform: uppercase;
+  }
+
+  /* ── CTA ── */
+  #cta {
+    background: var(--bg2);
+    border-top: 1px solid var(--line);
+  }
+  .cta-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 60px;
+  }
+  .cta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 7vw, 90px);
+    line-height: 0.95;
+    letter-spacing: 1px;
+  }
+  .cta-title .accent { color: var(--teal); }
+  .cta-sub {
+    font-size: 15px;
+    color: var(--fog);
+    font-weight: 300;
+    margin-top: 20px;
+    line-height: 1.7;
+    max-width: 480px;
+  }
+  .cta-actions { display: flex; flex-direction: column; gap: 12px; align-items: flex-end; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 24px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    position: relative; z-index: 1;
+  }
+  .footer-links { display: flex; gap: 28px; }
+  .footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--teal); }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+
+  /* Crosshair detail */
+  .crosshair {
+    position: absolute;
+    width: 20px; height: 20px;
+    pointer-events: none;
+  }
+  .crosshair::before, .crosshair::after {
+    content: '';
+    position: absolute;
+    background: var(--teal);
+    opacity: 0.4;
+  }
+  .crosshair::before { width: 1px; height: 100%; left: 50%; }
+  .crosshair::after { height: 1px; width: 100%; top: 50%; }
+  .ch-tl { top: 80px; left: 60px; }
+  .ch-tr { top: 80px; right: 60px; }
+  .ch-br { bottom: 80px; right: 60px; }
+</style>
 </head>
+<body>
 
-<body class="is-preload">
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-	<!-- Header -->
-	<section id="header">
-		<div class="inner">
-			<span class="icon solid major fa-cloud"></span>
-			<h1>Hi, I'm <strong>Nick</strong>, your next<br />
-				Software Engineer.</h1>
-			<p>I build modern websites that help businesses grow online.</p>
-			<ul class="actions special">
-				<li><a href="#one" class="button scrolly">Discover</a></li>
-			</ul>
-		</div>
-	</section>
+<!-- Background grid -->
+<div class="eng-grid"></div>
+<div class="blueprint-lines">
+  <div class="bp-line"></div>
+  <div class="bp-line"></div>
+  <div class="bp-line"></div>
+  <div class="bp-line"></div>
+</div>
 
-	<!-- One -->
-	<section id="one" class="main style1">
-		<div class="container">
-			<div class="row gtr-150" style="align-items: center;">
-				<div class="col-7 col-12-medium">
-					<header class="major">
-						<h2>Modernizing your business<br />
-							through the internet.</h2>
-					</header>
-					<p>Is your web presence working for you? In today's digital landscape, a well-designed website is
-						essential for growth. I'll help take your business to new heights with a custom website built
-						for performance, quality, and results.</p>
-				</div>
-				<div class="col-5 col-12-medium" style="display: flex; justify-content: center; align-items: center;">
-					<div style="
-						position: relative;
-						width: 280px;
-						height: 280px;
-						flex-shrink: 0;
-					">
-						<div style="
-							width: 280px;
-							height: 280px;
-							border-radius: 50%;
-							overflow: hidden;
-							box-shadow: 0 8px 40px rgba(0,0,0,0.18), 0 0 0 6px rgba(255,255,255,0.15);
-							border: 4px solid rgba(255,255,255,0.25);
-							transition: transform 0.3s ease, box-shadow 0.3s ease;
-						" onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 14px 50px rgba(0,0,0,0.25), 0 0 0 6px rgba(255,255,255,0.25)';"
-							onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 40px rgba(0,0,0,0.18), 0 0 0 6px rgba(255,255,255,0.15)';">
-							<img src="images/nick-headshot.jpg" alt="Nick Furr" style="
-								width: 100%;
-								height: 100%;
-								object-fit: cover;
-								object-position: 56% 33%;
-						transform: scale(1.05);
-								display: block;
-							" />
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+<!-- Nav -->
+<nav>
+  <a href="#" class="nav-logo">NICK<span>.</span>FURR</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#automation">Automation</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#cta">Contact</a></li>
+  </ul>
+</nav>
 
-	<!-- Two -->
-	<section id="two" class="main style2">
-		<div class="container">
-			<div class="row gtr-150">
-				<div class="col-6 col-12-medium">
-					<ul class="major-icons">
-						<li><span class="icon solid style1 major fa-code"></span></li>
-						<li><span class="icon solid style2 major fa-bolt"></span></li>
-						<li><span class="icon solid style3 major fa-camera-retro"></span></li>
-						<li><span class="icon solid style4 major fa-cog"></span></li>
-						<li><span class="icon solid style5 major fa-desktop"></span></li>
-						<li><span class="icon solid style6 major fa-calendar"></span></li>
-					</ul>
-				</div>
-				<div class="col-6 col-12-medium">
-					<header class="major">
-						<h2>Services</h2>
-					</header>
-					<p>1. Consultation - I will meet with you for a conversation about your website goals and how I will
-						help you meet them.</p>
-					<p>2. Proposal - I'll follow up with a detailed project proposal including scope, timeline, and
-						transparent pricing.</p>
-					<p>3. Creation - I will create your website in a timely fashion, and give regular updates on
-						progress.</p>
-					<p>4. Launch - I will bring your project to life, where you will reap the benefits of your new and
-						improved website.</p>
-				</div>
-			</div>
-		</div>
-	</section>
+<!-- Title Block (CAD detail) -->
+<div class="title-block">
+  <div><span class="tb-label">PROJ</span> &nbsp;NF-PORTFOLIO-2025</div>
+  <div><span class="tb-label">BASED</span> &nbsp;BURLINGAME, CA</div>
+  <div><span class="tb-label">REV</span> &nbsp;01 — FULL REWORK</div>
+  <div><span class="tb-label">BY</span> &nbsp;N. FURR</div>
+</div>
 
-	<!-- Three -->
-	<section id="three" class="main style1 special">
-		<div class="container">
-			<header class="major">
-				<h2>Recent Projects</h2>
-			</header>
-			<p>Concept projects showcasing my design and development work.</p>
-			<div class="row gtr-150">
-				<div class="col-4 col-12-medium">
-					<div class="project-viewport">
-						<iframe src="Restaurant/index.html" title="Restaurant website preview" loading="lazy"></iframe>
-					</div>
-					<h3>Restaurant Concept</h3>
-					<p>A React-powered fine dining website with interactive menu tabs, table booking with validation,
-						and responsive design built with Vite.</p>
-					<ul class="actions special">
-						<li><a href="Restaurant/index.html" class="button">More</a></li>
-					</ul>
-				</div>
-				<div class="col-4 col-12-medium">
-					<div class="project-viewport">
-						<iframe src="Hair Salon/index.html" title="Hair Salon website preview" loading="lazy"></iframe>
-					</div>
-					<h3>Hair Salon Concept</h3>
-					<p>A stylish salon website with service listings, stylist profiles, and an integrated booking system
-						to help clients schedule appointments with ease.</p>
-					<ul class="actions special">
-						<li><a href="Hair Salon/index.html" class="button">More</a></li>
-					</ul>
-				</div>
-				<div class="col-4 col-12-medium">
-					<div class="project-viewport">
-						<iframe src="Gym/index.html" title="Gym website preview" loading="lazy"></iframe>
-					</div>
-					<h3>Gym Concept</h3>
-					<p>A dynamic fitness center website featuring class schedules, membership plans, trainer bios, and a
-						member portal for tracking workout progress.</p>
-					<ul class="actions special">
-						<li><a href="Gym/index.html" class="button">More</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</section>
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="crosshair ch-tl"></div>
+  <div class="crosshair ch-tr"></div>
+  <div class="hero-orb"></div>
 
-	<!-- Four -->
-	<section id="four" class="main style2 special">
-		<div class="container">
-			<header class="major">
-				<h2>Ready to Get Started?</h2>
-			</header>
-			<p>Let's discuss how I can help transform your business with a professional web presence.</p>
-			<ul class="actions special">
-				<li><a href="mailto:me@nickfurr.com" class="button wide primary">Get in Touch</a></li>
-				<li><a href="#three" class="button wide">View Projects</a></li>
-			</ul>
-		</div>
-	</section>
+  <!-- Bridge wireframe SVG -->
+  <svg class="bridge-bg" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Bay Bridge simplified structural linework -->
+    <line x1="0" y1="400" x2="800" y2="400" stroke="#00d4aa" stroke-width="2"/>
+    <line x1="200" y1="400" x2="200" y2="80" stroke="#00d4aa" stroke-width="1.5"/>
+    <line x1="600" y1="400" x2="600" y2="80" stroke="#00d4aa" stroke-width="1.5"/>
+    <!-- cables left tower -->
+    <line x1="200" y1="80" x2="0" y2="400" stroke="#00d4aa" stroke-width="0.8" opacity="0.6"/>
+    <line x1="200" y1="80" x2="80" y2="400" stroke="#00d4aa" stroke-width="0.8" opacity="0.6"/>
+    <line x1="200" y1="80" x2="140" y2="400" stroke="#00d4aa" stroke-width="0.8" opacity="0.6"/>
+    <line x1="200" y1="80" x2="260" y2="400" stroke="#00d4aa" stroke-width="0.8" opacity="0.6"/>
+    <line x1="200" y1="80" x2="320" y2="400" stroke="#00d4aa" stroke-width="0.8" opacity="0.6"/>
+    <line x1="200" y1="80" x2="400" y2="400" stroke="#00d4aa" stroke-width="0.8" opacity="0.6"/>
+    <!-- cables right tower -->
+    <line x1="600" y1="80" x2="800" y2="400" stroke="#00d4aa" stroke-width="0.8" opacity="0.6"/>
+    <line x1="600" y1="80" x2="720" y2="400" stroke="#00d4aa" stroke-width="0.8" opacity="0.6"/>
+    <line x1="600" y1="80" x2="660" y2="400" stroke="#00d4aa" stroke-width="0.8" opacity="0.6"/>
+    <line x1="600" y1="80" x2="540" y2="400" stroke="#00d4aa" stroke-width="0.8" opacity="0.6"/>
+    <line x1="600" y1="80" x2="480" y2="400" stroke="#00d4aa" stroke-width="0.8" opacity="0.6"/>
+    <line x1="600" y1="80" x2="400" y2="400" stroke="#00d4aa" stroke-width="0.8" opacity="0.6"/>
+    <!-- deck structure -->
+    <line x1="0" y1="420" x2="800" y2="420" stroke="#00d4aa" stroke-width="1" opacity="0.5"/>
+    <line x1="0" y1="440" x2="800" y2="440" stroke="#00d4aa" stroke-width="0.5" opacity="0.3"/>
+    <!-- tower cross-members -->
+    <line x1="185" y1="120" x2="215" y2="120" stroke="#00d4aa" stroke-width="1"/>
+    <line x1="185" y1="160" x2="215" y2="160" stroke="#00d4aa" stroke-width="1"/>
+    <line x1="185" y1="200" x2="215" y2="200" stroke="#00d4aa" stroke-width="1"/>
+    <line x1="185" y1="240" x2="215" y2="240" stroke="#00d4aa" stroke-width="1"/>
+    <line x1="585" y1="120" x2="615" y2="120" stroke="#00d4aa" stroke-width="1"/>
+    <line x1="585" y1="160" x2="615" y2="160" stroke="#00d4aa" stroke-width="1"/>
+    <line x1="585" y1="200" x2="615" y2="200" stroke="#00d4aa" stroke-width="1"/>
+    <line x1="585" y1="240" x2="615" y2="240" stroke="#00d4aa" stroke-width="1"/>
+    <!-- dimension lines -->
+    <line x1="200" y1="460" x2="600" y2="460" stroke="#00d4aa" stroke-width="0.5" stroke-dasharray="4 4" opacity="0.4"/>
+    <text x="395" y="475" fill="#00d4aa" font-size="9" font-family="monospace" opacity="0.4" text-anchor="middle">MAIN SPAN — 400m</text>
+    <!-- water line -->
+    <path d="M 0 490 Q 100 480 200 490 Q 300 500 400 490 Q 500 480 600 490 Q 700 500 800 490" stroke="#1d6fa4" stroke-width="1" fill="none" opacity="0.4"/>
+    <path d="M 0 498 Q 100 488 200 498 Q 300 508 400 498 Q 500 488 600 498 Q 700 508 800 498" stroke="#1d6fa4" stroke-width="0.5" fill="none" opacity="0.25"/>
+  </svg>
 
-	<!-- Five -->
-	<!--
-			<section id="five" class="main style1">
-				<div class="container">
-					<header class="major special">
-						<h2>Elements</h2>
-					</header>
+  <span class="coord coord-tl">37°34'43"N  122°21'58"W</span>
+  <span class="coord coord-br">BURLINGAME, SAN MATEO COUNTY, CA</span>
 
-					<section>
-						<h4>Text</h4>
-						<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-						This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-						This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
-						<hr />
-						<header>
-							<h4>Heading with a Subtitle</h4>
-							<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-						</header>
-						<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-						<header>
-							<h5>Heading with a Subtitle</h5>
-							<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-						</header>
-						<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-						<hr />
-						<h2>Heading Level 2</h2>
-						<h3>Heading Level 3</h3>
-						<h4>Heading Level 4</h4>
-						<h5>Heading Level 5</h5>
-						<h6>Heading Level 6</h6>
-						<hr />
-						<h5>Blockquote</h5>
-						<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
-						<h5>Preformatted</h5>
-						<pre><code>i = 0;
+  <div class="hero-content">
+    <div class="hero-tag">Software Engineer &amp; Automation Specialist</div>
+    <h1 class="hero-name">NICK<br/><span class="accent">FURR</span></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-hook">
+      <strong>Construction engineer. Survey tech. Civil designer. Software engineer.</strong><br/>
+      The tools evolved. The precision never did.
+    </p>
+    <p class="hero-sub">Bay Area &mdash; <span>Burlingame, CA</span> &mdash; Building digital infrastructure for businesses ready to grow.</p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="#cta" class="btn-secondary">Let's Break Ground</a>
+    </div>
+  </div>
+</section>
 
-while (!deck.isInOrder()) {
-print 'Iteration ' + i;
-deck.shuffle();
-i++;
-}
+<!-- ══ STORY BANNER ══ -->
+<div class="story-banner">
+  <span class="marker">▶ BACKGROUND</span>
+  <p class="story-text">
+    Construction &nbsp;·&nbsp; Surveying &nbsp;·&nbsp; Civil Land Development &nbsp;·&nbsp; <strong>Now engineering the web with the same precision</strong>
+  </p>
+</div>
 
-print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
-					</section>
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label reveal">About</div>
+    <h2 class="section-title reveal">THE <span class="accent">ENGINEER</span><br/>BEHIND THE CODE</h2>
+    <div class="about-grid">
+      <div class="about-body reveal">
+        <p>
+          My path into software started long before a keyboard. I began as a <strong>Project Engineer at Nibbi Bros</strong> in San Francisco — building a Low-Income Housing Development and an SFO Long-Term Parking Garage, running quantity takeoffs and coordinating across Civil, Architects, and Subcontractors.
+        </p>
+        <p>
+          From there I moved into survey and design — drafting As-Builts for SoCal Gas at Westland Group, where I <strong>automated Excel workflows in Visual Basic</strong> that cut thousands in company costs. That was the first time I realized software could make entire systems run better. I never forgot that.
+        </p>
+        <p>
+          Then five years at <strong>BKF Engineers in Redwood City</strong> as Lead AutoCAD Civil 3D Designer — grading, electric, signage, water, storm and sewer plans across high-value Bay Area projects including Treasure Island (SF), 2201 Valley St (Oakland), and Adrian Court (Burlingame). Working to Caltrans Standards, managing multiple projects simultaneously, always precise.
+        </p>
+        <p>
+          Since 2021 I've been building full-stack web applications and client sites through 100Devs. The tools changed. The discipline didn't.
+        </p>
+      </div>
+      <div class="about-specs reveal reveal-delay-2">
+        <div class="spec-row">
+          <span class="spec-key">Location</span>
+          <span class="spec-val">Burlingame, CA (Bay Area)</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Education</span>
+          <span class="spec-val">Cal Poly Pomona — B.S. Civil Engineering, 2019</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Background</span>
+          <span class="spec-val">Nibbi Bros · Westland Group (SoCal Gas) · BKF Engineers · 100Devs</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Notable</span>
+          <span class="spec-val">Treasure Island (SF) · SFO Long-Term Parking Garage · SoCal Gas Utility As-Builts</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Stack</span>
+          <span class="spec-val">
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Express</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">Tailwind</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Next.js</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Git</span>
+            <span class="tag">HTML/CSS</span>
+            <span class="tag">REST APIs</span>
+          </span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Interests</span>
+          <span class="spec-val">Fitness · Outdoors · Gaming · Food</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Status</span>
+          <span class="spec-val" style="color:var(--teal)">● Available for projects</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-					<section>
-						<h4>Lists</h4>
-						<div class="row">
-							<div class="col-6 col-12-medium">
-								<h5>Unordered</h5>
-								<ul>
-									<li>Dolor pulvinar etiam.</li>
-									<li>Sagittis adipiscing.</li>
-									<li>Felis enim feugiat.</li>
-								</ul>
-								<h5>Alternate</h5>
-								<ul class="alt">
-									<li>Dolor pulvinar etiam.</li>
-									<li>Sagittis adipiscing.</li>
-									<li>Felis enim feugiat.</li>
-								</ul>
-							</div>
-							<div class="col-6 col-12-medium">
-								<h5>Ordered</h5>
-								<ol>
-									<li>Dolor pulvinar etiam.</li>
-									<li>Etiam vel felis viverra.</li>
-									<li>Felis enim feugiat.</li>
-									<li>Dolor pulvinar etiam.</li>
-									<li>Etiam vel felis lorem.</li>
-									<li>Felis enim et feugiat.</li>
-								</ol>
-								<h5>Icons</h5>
-								<ul class="icons">
-									<li><a href="#" class="icon brands fa-twitter"><span class="label">X</span></a></li>
-									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-								</ul>
-							</div>
-						</div>
-						<h5>Actions</h5>
-						<div class="row">
-							<div class="col-6 col-12-medium">
-								<ul class="actions">
-									<li><a href="#" class="button primary">Default</a></li>
-									<li><a href="#" class="button">Default</a></li>
-								</ul>
-								<ul class="actions small">
-									<li><a href="#" class="button primary small">Small</a></li>
-									<li><a href="#" class="button small">Small</a></li>
-								</ul>
-								<ul class="actions stacked">
-									<li><a href="#" class="button primary">Default</a></li>
-									<li><a href="#" class="button">Default</a></li>
-								</ul>
-								<ul class="actions stacked">
-									<li><a href="#" class="button primary small">Small</a></li>
-									<li><a href="#" class="button small">Small</a></li>
-								</ul>
-							</div>
-							<div class="col-6 col-12-medium">
-								<ul class="actions stacked">
-									<li><a href="#" class="button primary fit">Default</a></li>
-									<li><a href="#" class="button fit">Default</a></li>
-								</ul>
-								<ul class="actions stacked">
-									<li><a href="#" class="button primary small fit">Small</a></li>
-									<li><a href="#" class="button small fit">Small</a></li>
-								</ul>
-							</div>
-						</div>
-					</section>
+<!-- ══ SERVICES ══ -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-label reveal">Services</div>
+    <h2 class="section-title reveal">WHAT I <span class="accent">BUILD</span></h2>
 
-					<section>
-						<h4>Table</h4>
-						<h5>Default</h5>
-						<div class="table-wrapper">
-							<table>
-								<thead>
-									<tr>
-										<th>Name</th>
-										<th>Description</th>
-										<th>Price</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Item One</td>
-										<td>Ante turpis integer aliquet porttitor.</td>
-										<td>29.99</td>
-									</tr>
-									<tr>
-										<td>Item Two</td>
-										<td>Vis ac commodo adipiscing arcu aliquet.</td>
-										<td>19.99</td>
-									</tr>
-									<tr>
-										<td>Item Three</td>
-										<td> Morbi faucibus arcu accumsan lorem.</td>
-										<td>29.99</td>
-									</tr>
-									<tr>
-										<td>Item Four</td>
-										<td>Vitae integer tempus condimentum.</td>
-										<td>19.99</td>
-									</tr>
-									<tr>
-										<td>Item Five</td>
-										<td>Ante turpis integer aliquet porttitor.</td>
-										<td>29.99</td>
-									</tr>
-								</tbody>
-								<tfoot>
-									<tr>
-										<td colspan="2"></td>
-										<td>100.00</td>
-									</tr>
-								</tfoot>
-							</table>
-						</div>
+    <!-- Tier 1 -->
+    <div class="tier-label reveal">
+      <span class="tier-num">01</span>
+      <span class="tier-title">Web Development</span>
+      <span class="tier-line"></span>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-corner">WEB-01</div>
+        <div class="service-title">Custom Website Design & Build</div>
+        <div class="service-desc">Fast, modern websites built from scratch — engineered for performance, quality, and results. No templates, no shortcuts.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-corner">WEB-02</div>
+        <div class="service-title">Full-Stack Web Applications</div>
+        <div class="service-desc">End-to-end applications with React frontends, Node/Express backends, and MongoDB or PostgreSQL databases built for real users.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-corner">WEB-03</div>
+        <div class="service-title">Performance, SEO & Accessibility</div>
+        <div class="service-desc">Sites that load fast, rank on Google, and work for everyone. Built to modern standards so your investment actually pays off.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-corner">WEB-04</div>
+        <div class="service-title">Responsive & Mobile-First</div>
+        <div class="service-desc">Every build looks and works perfectly on any device — phone, tablet, or desktop. No exceptions.</div>
+      </div>
+    </div>
 
-						<h5>Alternate</h5>
-						<div class="table-wrapper">
-							<table class="alt">
-								<thead>
-									<tr>
-										<th>Name</th>
-										<th>Description</th>
-										<th>Price</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Item One</td>
-										<td>Ante turpis integer aliquet porttitor.</td>
-										<td>29.99</td>
-									</tr>
-									<tr>
-										<td>Item Two</td>
-										<td>Vis ac commodo adipiscing arcu aliquet.</td>
-										<td>19.99</td>
-									</tr>
-									<tr>
-										<td>Item Three</td>
-										<td> Morbi faucibus arcu accumsan lorem.</td>
-										<td>29.99</td>
-									</tr>
-									<tr>
-										<td>Item Four</td>
-										<td>Vitae integer tempus condimentum.</td>
-										<td>19.99</td>
-									</tr>
-									<tr>
-										<td>Item Five</td>
-										<td>Ante turpis integer aliquet porttitor.</td>
-										<td>29.99</td>
-									</tr>
-								</tbody>
-								<tfoot>
-									<tr>
-										<td colspan="2"></td>
-										<td>100.00</td>
-									</tr>
-								</tfoot>
-							</table>
-						</div>
-					</section>
+    <!-- Tier 2 -->
+    <div class="tier-label reveal" style="margin-top: 56px;">
+      <span class="tier-num">02</span>
+      <span class="tier-title">Automation & Systems</span>
+      <span class="tier-line"></span>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-corner">AUT-01</div>
+        <div class="service-title">Workflow Automation</div>
+        <div class="service-desc">Replace manual, repetitive tasks with smart automated systems — bookings, reminders, follow-ups, data entry. Done automatically.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-corner">AUT-02</div>
+        <div class="service-title">AI-Powered Tools</div>
+        <div class="service-desc">Custom AI assistants, chatbots, and smart workflows that handle customer queries, qualify leads, and run 24/7 without you.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-corner">AUT-03</div>
+        <div class="service-title">CRM & Lead Pipeline Setup</div>
+        <div class="service-desc">Connect your forms, CRM, and email into one seamless pipeline. Never lose a lead or miss a follow-up again.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-corner">AUT-04</div>
+        <div class="service-title">System Integration</div>
+        <div class="service-desc">Make your existing tools talk to each other. Airtable, Notion, Slack, Twilio, Stripe — connected and working as one system.</div>
+      </div>
+    </div>
 
-					<section>
-						<h4>Buttons</h4>
-						<ul class="actions">
-							<li><a href="#" class="button primary">Primary</a></li>
-							<li><a href="#" class="button">Default</a></li>
-						</ul>
-						<ul class="actions">
-							<li><a href="#" class="button large">Large</a></li>
-							<li><a href="#" class="button">Default</a></li>
-							<li><a href="#" class="button small">Small</a></li>
-						</ul>
-						<ul class="actions fit">
-							<li><a href="#" class="button fit">Fit</a></li>
-							<li><a href="#" class="button primary fit">Fit</a></li>
-							<li><a href="#" class="button fit">Fit</a></li>
-						</ul>
-						<ul class="actions fit small">
-							<li><a href="#" class="button primary fit small">Fit + Small</a></li>
-							<li><a href="#" class="button fit small">Fit + Small</a></li>
-							<li><a href="#" class="button primary fit small">Fit + Small</a></li>
-						</ul>
-						<ul class="actions">
-							<li><a href="#" class="button primary icon solid fa-download">Icon</a></li>
-							<li><a href="#" class="button icon solid fa-download">Icon</a></li>
-						</ul>
-						<ul class="actions">
-							<li><span class="button primary disabled">Disabled</span></li>
-							<li><span class="button disabled">Disabled</span></li>
-						</ul>
-					</section>
+    <!-- How It Works -->
+    <div class="tier-label reveal" style="margin-top: 72px;">
+      <span class="tier-num" style="color: var(--fog);">—</span>
+      <span class="tier-title" style="color: var(--fog);">How It Works</span>
+      <span class="tier-line"></span>
+    </div>
+    <div class="process-grid reveal">
+      <div class="process-step">
+        <div class="process-num">01</div>
+        <div class="process-title">Consultation</div>
+        <div class="process-desc">A real conversation — not a sales pitch. I learn your business, your pain points, and what success looks like for you.</div>
+      </div>
+      <div class="process-arrow">→</div>
+      <div class="process-step">
+        <div class="process-num">02</div>
+        <div class="process-title">Proposal</div>
+        <div class="process-desc">A clear, itemized plan: scope, timeline, honest pricing. Like construction documents — no surprises on delivery day.</div>
+      </div>
+      <div class="process-arrow">→</div>
+      <div class="process-step">
+        <div class="process-num">03</div>
+        <div class="process-title">Build</div>
+        <div class="process-desc">I get to work with regular updates. Whether it's a website, automation, or both — built with precision.</div>
+      </div>
+      <div class="process-arrow">→</div>
+      <div class="process-step">
+        <div class="process-num">04</div>
+        <div class="process-title">Launch</div>
+        <div class="process-desc">Your project goes live. If automation is built in, you start saving time from day one. This isn't a handoff — it's a foundation.</div>
+      </div>
+    </div>
 
-					<section>
-						<h4>Form</h4>
-						<form method="post" action="#">
-							<div class="row gtr-uniform gtr-50">
-								<div class="col-6 col-12-xsmall">
-									<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
-								</div>
-								<div class="col-6 col-12-xsmall">
-									<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
-								</div>
-								<div class="col-12">
-									<select name="demo-category" id="demo-category">
-										<option value="">- Category -</option>
-										<option value="1">Manufacturing</option>
-										<option value="1">Shipping</option>
-										<option value="1">Administration</option>
-										<option value="1">Human Resources</option>
-									</select>
-								</div>
-								<div class="col-4 col-12-small">
-									<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-									<label for="demo-priority-low">Low</label>
-								</div>
-								<div class="col-4 col-12-small">
-									<input type="radio" id="demo-priority-normal" name="demo-priority">
-									<label for="demo-priority-normal">Normal</label>
-								</div>
-								<div class="col-4 col-12-small">
-									<input type="radio" id="demo-priority-high" name="demo-priority">
-									<label for="demo-priority-high">High</label>
-								</div>
-								<div class="col-6 col-12-small">
-									<input type="checkbox" id="demo-copy" name="demo-copy">
-									<label for="demo-copy">Email me a copy</label>
-								</div>
-								<div class="col-6 col-12-small">
-									<input type="checkbox" id="demo-human" name="demo-human" checked>
-									<label for="demo-human">Not a robot</label>
-								</div>
-								<div class="col-12">
-									<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-								</div>
-								<div class="col-12">
-									<ul class="actions">
-										<li><input type="submit" value="Send Message" class="primary" /></li>
-										<li><input type="reset" value="Reset" /></li>
-									</ul>
-								</div>
-							</div>
-						</form>
-					</section>
+  </div>
+</section>
 
-					<section>
-						<h4>Image</h4>
-						<h5>Fit</h5>
-						<div class="box alt">
-							<div class="row gtr-uniform gtr-50">
-								<div class="col-12"><span class="image fit"><img src="images/pic06.jpg" alt="" /></span></div>
-								<div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-								<div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
-								<div class="col-4"><span class="image fit"><img src="images/pic04.jpg" alt="" /></span></div>
-								<div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
-								<div class="col-4"><span class="image fit"><img src="images/pic04.jpg" alt="" /></span></div>
-								<div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-								<div class="col-4"><span class="image fit"><img src="images/pic04.jpg" alt="" /></span></div>
-								<div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-								<div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
-							</div>
-						</div>
-						<h5>Left &amp; Right</h5>
-						<p><span class="image left"><img src="images/pic05.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-						<p><span class="image right"><img src="images/pic05.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-					</section>
+<!-- ══ AUTOMATION ══ -->
+<section id="automation">
+  <div class="section-inner">
+    <div class="section-label reveal">Automation</div>
+    <h2 class="section-title reveal">SYSTEMS THAT WORK<br/><span class="accent">WHILE YOU SLEEP</span></h2>
+    <p class="auto-intro reveal">
+      The same systems thinking that goes into <strong>engineering infrastructure</strong> applies to your business workflows. If you're manually sending reminders, copying data, or following up with leads by hand — I can build you a better way.
+    </p>
+    <div class="auto-grid">
+      <div class="auto-card reveal">
+        <span class="auto-icon">📅</span>
+        <div class="auto-title">Booking & Reminders</div>
+        <div class="auto-desc">Clients book online. Confirmations and reminders send automatically. Zero manual follow-up.</div>
+      </div>
+      <div class="auto-card reveal reveal-delay-1">
+        <span class="auto-icon">📥</span>
+        <div class="auto-title">Client Intake</div>
+        <div class="auto-desc">Forms that populate your CRM, trigger emails, and create tasks — no data entry needed.</div>
+      </div>
+      <div class="auto-card reveal reveal-delay-2">
+        <span class="auto-icon">💬</span>
+        <div class="auto-title">AI Chat Assistant</div>
+        <div class="auto-desc">A smart assistant on your site that answers FAQs and qualifies leads 24/7 — powered by AI.</div>
+      </div>
+      <div class="auto-card reveal reveal-delay-3">
+        <span class="auto-icon">📧</span>
+        <div class="auto-title">Lead Follow-Up</div>
+        <div class="auto-desc">New inquiry comes in — a personalized email goes out within minutes. Never lose a warm lead.</div>
+      </div>
+      <div class="auto-card reveal reveal-delay-4">
+        <span class="auto-icon">🧾</span>
+        <div class="auto-title">Invoicing</div>
+        <div class="auto-desc">Auto-generate invoices and send payment reminders on schedule. Get paid faster, effortlessly.</div>
+      </div>
+      <div class="auto-card reveal reveal-delay-5">
+        <span class="auto-icon">📊</span>
+        <div class="auto-title">Reporting Pipelines</div>
+        <div class="auto-desc">Pull data from multiple sources into clean dashboards and weekly summaries — automatically.</div>
+      </div>
+    </div>
+    <div class="auto-stack reveal">
+      <span class="stack-label">Stack</span>
+      <span class="stack-tag">Make</span>
+      <span class="stack-tag">n8n</span>
+      <span class="stack-tag">Zapier</span>
+      <span class="stack-tag">Airtable</span>
+      <span class="stack-tag">Notion</span>
+      <span class="stack-tag">Twilio</span>
+      <span class="stack-tag">Claude API</span>
+      <span class="stack-tag">OpenAI</span>
+    </div>
+  </div>
+</section>
 
-				</div>
-			</section>
-		-->
+<!-- ══ PROJECTS ══ -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-label reveal">Projects</div>
+    <h2 class="section-title reveal">REAL-WORLD <span class="accent">CONCEPTS.</span><br/>PRODUCTION-READY THINKING.</h2>
+    <p class="projects-intro reveal">Each concept is built to demonstrate a specific service — from custom website builds to full automation pipelines and AI-powered features.</p>
 
-	<!-- Footer -->
-	<section id="footer">
-		<ul class="icons">
-			<li><a href="https://www.linkedin.com/in/nicholas-furr/" class="icon brands alt fa-linkedin"
-					aria-label="LinkedIn"><span class="label">LinkedIn</span></a></li>
-			<li><a href="https://x.com/nickfurr_" class="icon brands alt" aria-label="X"><svg
-						xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20"
-						fill="currentColor">
-						<path
-							d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
-					</svg><span class="label">X</span></a></li>
-			<li><a href="https://github.com/nick-furr" class="icon brands alt fa-github" aria-label="GitHub"><span
-						class="label">GitHub</span></a></li>
-			<li><a href="mailto:me@nickfurr.com" class="icon solid alt fa-envelope" aria-label="Email"><span
-						class="label">Email</span></a></li>
-		</ul>
-		<ul class="copyright">
-			<li>&copy; Untitled</li>
-			<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-		</ul>
-	</section>
+    <div class="projects-grid">
 
-	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrolly.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
+      <!-- Card 1: Restaurant — Custom Website Build + CRM -->
+      <div class="project-card reveal">
+        <div class="plan-header">
+          <span class="plan-sheet-num">SHEET NF-001</span>
+          <span class="plan-revision">REV A — IN PROGRESS</span>
+        </div>
+        <div class="project-visual" style="background: linear-gradient(135deg, rgba(0,212,170,0.06), rgba(29,111,164,0.08));">
+          <span class="pv-icon">🍽️</span>
+        </div>
+        <div class="plan-body">
+          <div class="plan-service-badge">Custom Website Build + CRM Pipeline</div>
+          <div class="plan-title">Restaurant Concept</div>
+          <div class="plan-desc">Fine dining site with interactive menu, online reservations feeding directly into a CRM, and automated confirmation emails to guests — zero manual follow-up for the owner.</div>
+          <div class="plan-tags">
+            <span class="plan-tag">React</span>
+            <span class="plan-tag">Node.js</span>
+            <span class="plan-tag">CRM Integration</span>
+            <span class="plan-tag">Email Automation</span>
+          </div>
+          <div class="plan-actions">
+            <a href="#" class="plan-btn plan-btn-disabled" title="Coming soon">⬡ Live Demo</a>
+            <a href="https://github.com/nick-furr" target="_blank" class="plan-btn plan-btn-ghost">⌥ GitHub</a>
+          </div>
+        </div>
+      </div>
 
+      <!-- Card 2: Hair Salon — Workflow Automation -->
+      <div class="project-card reveal reveal-delay-1">
+        <div class="plan-header">
+          <span class="plan-sheet-num">SHEET NF-002</span>
+          <span class="plan-revision">REV A — IN PROGRESS</span>
+        </div>
+        <div class="project-visual" style="background: linear-gradient(135deg, rgba(124,58,237,0.06), rgba(0,212,170,0.06));">
+          <span class="pv-icon">✂️</span>
+        </div>
+        <div class="plan-body">
+          <div class="plan-service-badge">Workflow Automation</div>
+          <div class="plan-title">Hair Salon Concept</div>
+          <div class="plan-desc">Salon site with full booking automation — appointments trigger SMS reminders, no-show follow-ups, and rebooking nudges. The owner manages everything from one dashboard.</div>
+          <div class="plan-tags">
+            <span class="plan-tag">React</span>
+            <span class="plan-tag">Booking System</span>
+            <span class="plan-tag">SMS Automation</span>
+            <span class="plan-tag">Make</span>
+          </div>
+          <div class="plan-actions">
+            <a href="#" class="plan-btn plan-btn-disabled" title="Coming soon">⬡ Live Demo</a>
+            <a href="https://github.com/nick-furr" target="_blank" class="plan-btn plan-btn-ghost">⌥ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Gym — Full-Stack App + AI Chat -->
+      <div class="project-card reveal reveal-delay-2">
+        <div class="plan-header">
+          <span class="plan-sheet-num">SHEET NF-003</span>
+          <span class="plan-revision">REV A — IN PROGRESS</span>
+        </div>
+        <div class="project-visual" style="background: linear-gradient(135deg, rgba(29,111,164,0.08), rgba(0,212,170,0.04));">
+          <span class="pv-icon">🏋️</span>
+        </div>
+        <div class="plan-body">
+          <div class="plan-service-badge">Full-Stack App + AI Chat Assistant</div>
+          <div class="plan-title">Gym Concept</div>
+          <div class="plan-desc">Full-stack fitness platform with member portal, class scheduling, and membership tiers — plus an AI assistant that handles FAQs, class availability, and membership queries 24/7.</div>
+          <div class="plan-tags">
+            <span class="plan-tag">React</span>
+            <span class="plan-tag">Node.js</span>
+            <span class="plan-tag">MongoDB</span>
+            <span class="plan-tag">AI Assistant</span>
+          </div>
+          <div class="plan-actions">
+            <a href="#" class="plan-btn plan-btn-disabled" title="Coming soon">⬡ Live Demo</a>
+            <a href="https://github.com/nick-furr" target="_blank" class="plan-btn plan-btn-ghost">⌥ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section id="cta">
+  <div class="cta-inner">
+    <div>
+      <h2 class="cta-title reveal">READY TO<br/><span class="accent">BREAK</span><br/>GROUND?</h2>
+      <p class="cta-sub reveal reveal-delay-1">Whether you need a new website, an automation system, or both — let's build something that actually moves your business forward.</p>
+    </div>
+    <div class="cta-actions reveal reveal-delay-2">
+      <a href="/cdn-cgi/l/email-protection#adc5c8c1c1c2edc3c4cec6cbd8dfdf83cec2c0" class="btn-primary">Get In Touch</a>
+      <a href="#projects" class="btn-secondary">View Projects</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <span>© 2025 NICK FURR — ENGINEERED IN THE BAY AREA</span>
+  <div class="footer-links">
+    <a href="#">LinkedIn</a>
+    <a href="#">GitHub</a>
+    <a href="#">X</a>
+    <a href="#">Email</a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+  function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  // Cursor scale on hover
+  document.querySelectorAll('a, button, .project-card, .auto-card, .service-card').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.width = '20px';
+      cursor.style.height = '20px';
+      ring.style.width = '56px';
+      ring.style.height = '56px';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.width = '12px';
+      cursor.style.height = '12px';
+      ring.style.width = '36px';
+      ring.style.height = '36px';
+    });
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+            observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+  // Also immediately mark all as visible for preview environments
+  reveals.forEach(el => el.classList.add('visible'));
+</script>
 </body>
-
 </html>
