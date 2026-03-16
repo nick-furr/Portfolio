@@ -808,6 +808,139 @@
     text-transform: uppercase;
   }
 
+
+  /* ── CONTACT FORM ── */
+  .cta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .cta-left .section-label { margin-bottom: 16px; }
+  .cta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 7vw, 90px);
+    line-height: 0.95;
+    letter-spacing: 1px;
+  }
+  .cta-title .accent { color: var(--teal); }
+  .cta-sub {
+    font-size: 15px;
+    color: var(--fog);
+    font-weight: 300;
+    margin-top: 20px;
+    line-height: 1.7;
+  }
+  .cta-details {
+    margin-top: 32px;
+    border: 1px solid var(--line);
+  }
+  .cta-detail-row {
+    display: flex;
+    gap: 20px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+    align-items: center;
+  }
+  .cta-detail-row:last-child { border-bottom: none; }
+  .cta-detail-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--teal);
+    min-width: 80px;
+  }
+  .cta-detail-val {
+    font-size: 13px;
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  a.cta-detail-val:hover { color: var(--teal); }
+  .contact-form-wrap {
+    border: 1px solid var(--line);
+    background: var(--bg2);
+  }
+  .form-header {
+    border-bottom: 1px solid var(--line);
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,212,170,0.03);
+  }
+  .form-sheet-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--teal);
+    letter-spacing: 2px;
+  }
+  .form-status {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--teal);
+    letter-spacing: 1px;
+  }
+  .contact-form {
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .form-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .form-input {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
+    color: var(--white);
+    font-family: 'Archivo', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 12px 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .form-input::placeholder { color: var(--muted); }
+  .form-input:focus { border-color: var(--teal); }
+  .form-select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2300d4aa' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+  }
+  .form-select option { background: var(--bg2); color: var(--white); }
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.6;
+  }
+  .form-submit {
+    width: 100%;
+    justify-content: center;
+    font-size: 13px;
+    padding: 16px;
+    border: none;
+    cursor: pointer;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+  }
+
   /* ── CTA ── */
   #cta {
     background: var(--bg2);
@@ -1316,14 +1449,67 @@
 
 <!-- ══ CTA ══ -->
 <section id="cta">
-  <div class="cta-inner">
-    <div>
-      <h2 class="cta-title reveal">READY TO<br/><span class="accent">BREAK</span><br/>GROUND?</h2>
-      <p class="cta-sub reveal reveal-delay-1">Whether you need a new website, an automation system, or both — let's build something that actually moves your business forward.</p>
-    </div>
-    <div class="cta-actions reveal reveal-delay-2">
-      <a href="/cdn-cgi/l/email-protection#adc5c8c1c1c2edc3c4cec6cbd8dfdf83cec2c0" class="btn-primary">Get In Touch</a>
-      <a href="#projects" class="btn-secondary">View Projects</a>
+  <div class="section-inner">
+    <div class="cta-grid">
+      <div class="cta-left reveal">
+        <div class="section-label">Contact</div>
+        <h2 class="cta-title">READY TO<br/><span class="accent">BREAK</span><br/>GROUND?</h2>
+        <p class="cta-sub">Whether you need a new website, an automation system, or both — let's build something that moves your business forward.</p>
+        <div class="cta-details">
+          <div class="cta-detail-row">
+            <span class="cta-detail-label">EMAIL</span>
+            <a href="mailto:me@nickfurr.com" class="cta-detail-val">me@nickfurr.com</a>
+          </div>
+          <div class="cta-detail-row">
+            <span class="cta-detail-label">BASED</span>
+            <span class="cta-detail-val">Burlingame, CA — Bay Area</span>
+          </div>
+          <div class="cta-detail-row">
+            <span class="cta-detail-label">RESPONSE</span>
+            <span class="cta-detail-val">Within 24 hours</span>
+          </div>
+        </div>
+      </div>
+      <div class="cta-right reveal reveal-delay-2">
+        <div class="contact-form-wrap">
+          <div class="form-header">
+            <span class="form-sheet-num">FORM NF-CONTACT</span>
+            <span class="form-status">● OPEN</span>
+          </div>
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success" class="contact-form">
+            <input type="hidden" name="form-name" value="contact"/>
+            <p style="display:none"><input name="bot-field"/></p>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">NAME</label>
+                <input type="text" name="name" class="form-input" placeholder="Your name" required/>
+              </div>
+              <div class="form-group">
+                <label class="form-label">EMAIL</label>
+                <input type="email" name="email" class="form-input" placeholder="your@email.com" required/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">WHAT DO YOU NEED?</label>
+              <select name="service" class="form-input form-select">
+                <option value="" disabled selected>Select a service</option>
+                <option value="website">Custom Website</option>
+                <option value="fullstack">Full-Stack Web App</option>
+                <option value="automation">Workflow Automation</option>
+                <option value="ai">AI-Powered Tools</option>
+                <option value="crm">CRM &amp; Lead Pipeline</option>
+                <option value="both">Website + Automation</option>
+                <option value="other">Not sure yet</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">MESSAGE</label>
+              <textarea name="message" class="form-input form-textarea" placeholder="Tell me about your project..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary form-submit">Submit Project Brief →</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </section>

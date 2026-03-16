@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Message Sent — Nick Furr</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400&family=Archivo:wght@300;400;600&display=swap" rel="stylesheet"/>
+<style>
+  :root { --bg: #090c10; --teal: #00d4aa; --fog: #a8b8c8; --white: #e8edf2; --line: rgba(168,184,200,0.12); --grid: rgba(168,184,200,0.06); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--white); font-family: 'Archivo', sans-serif; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+  .eng-grid {
+    position: fixed; inset: 0; pointer-events: none;
+    background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+  .card {
+    position: relative; z-index: 1;
+    border: 1px solid var(--line);
+    padding: 0;
+    max-width: 480px;
+    width: 90%;
+    background: rgba(13,17,23,0.9);
+  }
+  .card-header {
+    border-bottom: 1px solid var(--line);
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--teal);
+    background: rgba(0,212,170,0.03);
+  }
+  .card-body { padding: 48px 40px; text-align: center; }
+  .check {
+    font-size: 48px;
+    margin-bottom: 24px;
+    display: block;
+  }
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  h1 span { color: var(--teal); }
+  p {
+    font-size: 15px;
+    color: var(--fog);
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--teal);
+    letter-spacing: 1px;
+    margin-bottom: 32px;
+  }
+  a {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--teal);
+    color: var(--bg);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+    transition: background 0.2s;
+  }
+  a:hover { background: #00ffe6; }
+</style>
+</head>
+<body>
+<div class="eng-grid"></div>
+<div class="card">
+  <div class="card-header">
+    <span>FORM NF-CONTACT</span>
+    <span>STATUS: RECEIVED</span>
+  </div>
+  <div class="card-body">
+    <span class="check">✓</span>
+    <h1>MESSAGE<br/><span>RECEIVED</span></h1>
+    <p>Thanks for reaching out. I'll review your project brief and get back to you within 24 hours.</p>
+    <div class="sub">— N. FURR · BURLINGAME, CA</div>
+    <a href="/">← Back to Site</a>
+  </div>
+</div>
+</body>
+</html>
