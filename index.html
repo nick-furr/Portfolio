@@ -494,10 +494,9 @@
 
   /* ── TOUCH DEVICES ── */
   @media (hover: none) and (pointer: coarse) {
-    body { cursor: auto; }
-    .cursor, .cursor-ring { display: none; }
-    .btn-primary, .btn-secondary, .plan-btn { cursor: pointer; }
-    a, button { cursor: pointer; }
+    body, * { cursor: auto !important; }
+    .cursor, .cursor-ring { display: none !important; }
+    a, button, .btn-primary, .btn-secondary, .plan-btn, .project-card, .service-card, .auto-card { cursor: pointer !important; }
   }
 
   /* ── TABLET (≤ 900px) ── */
