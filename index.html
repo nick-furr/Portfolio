@@ -676,9 +676,9 @@
 
 <!-- Title Block -->
 <div class="title-block">
-  <div><span class="tb-label">PROJ</span> &nbsp;NF-PORTFOLIO-2025</div>
+  <div><span class="tb-label">PROJ</span> &nbsp;NF-PORTFOLIO-2026</div>
   <div><span class="tb-label">BASED</span> &nbsp;BURLINGAME, CA</div>
-  <div><span class="tb-label">REV</span> &nbsp;03 — TERRAIN BUILD</div>
+  <div><span class="tb-label">REV</span> &nbsp;04 — FINAL GRADE</div>
   <div><span class="tb-label">BY</span> &nbsp;N. FURR</div>
 </div>
 
@@ -943,7 +943,7 @@
   <div class="section-inner">
     <div class="section-label reveal">Projects</div>
     <h2 class="section-title reveal">REAL-WORLD <span style="color:var(--teal)">CONCEPTS.</span><br/>PRODUCTION-READY THINKING.</h2>
-    <p class="projects-intro reveal">Each concept is built to demonstrate a specific service — from custom website builds to full automation pipelines and AI-powered features.</p>
+    <p class="projects-intro reveal">Built to demonstrate full-stack development, automation, and AI integration — from concept to production.</p>
 
     <div class="projects-grid">
 
@@ -954,7 +954,7 @@
           <span class="plan-revision">REV A — COMPLETE</span>
         </div>
         <div class="project-visual" style="background:linear-gradient(135deg,rgba(0,184,150,0.07),rgba(232,131,10,0.05))">
-          <span class="pv-icon">🍽️</span>
+          <span class="pv-icon"><svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#00b896" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><!-- fork tines --><line x1="6" y1="2" x2="6" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="10" y1="2" x2="10" y2="6"/><!-- fork neck + handle --><path d="M6 6 Q8 8.5 8 10.5 L8 22"/><!-- knife blade --><path d="M16 2c1.5 1 2 2.5 2 4v2h-2"/><!-- knife handle --><line x1="16" y1="8" x2="16" y2="22"/></svg></span>
         </div>
         <div class="plan-body">
           <div class="plan-service-badge">Custom Website Build + CRM Pipeline</div>
@@ -1091,6 +1091,24 @@ const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 reveals.forEach(el => { observer.observe(el); el.classList.add('visible'); });
+
+// ── HEADSHOT FADE-IN ──
+const headshot = document.querySelector('.about-headshot');
+if (headshot) {
+  headshot.style.opacity = '0';
+  headshot.style.transform = 'translateY(12px)';
+  headshot.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+  const headshotObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        headshot.style.opacity = '1';
+        headshot.style.transform = 'translateY(0)';
+        headshotObserver.unobserve(headshot);
+      }
+    });
+  }, { threshold: 0.15 });
+  headshotObserver.observe(headshot);
+}
 
 // ── SERVICE CARD TOGGLE ──
 document.querySelectorAll('.service-toggle').forEach(toggle => {
