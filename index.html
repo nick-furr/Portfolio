@@ -467,6 +467,88 @@
   .project-card:nth-child(2) .plan-tag { color: var(--amber); background: var(--amber-dim); border: 1px solid var(--line-strong); }
   .project-card:nth-child(3) .plan-tag { color: var(--green); background: var(--green-dim); border: 1px solid rgba(46,184,122,0.2); }
 
+  /* ── FEATURED PROJECT CARD ── */
+  .fp-card {
+    border: 1px solid var(--line-strong);
+    background: rgba(16,13,10,0.85);
+    margin-top: 48px;
+    overflow: hidden;
+    position: relative;
+    transition: box-shadow 0.3s;
+  }
+  .fp-card:hover { box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+  .fp-card-header {
+    border-bottom: 1px solid var(--line);
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(232,131,10,0.04);
+  }
+  .fp-card-header-left { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--teal); letter-spacing: 2px; }
+  .fp-card-header-right { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--green); letter-spacing: 1px; }
+  .fp-body { display: grid; grid-template-columns: 1.3fr 1fr; }
+  .fp-screenshot-wrap {
+    border-right: 1px solid var(--line);
+    overflow: hidden;
+    background: #0a080a;
+    min-height: 360px;
+    display: flex;
+    align-items: stretch;
+  }
+  .fp-screenshot-wrap img {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0.88;
+    transition: opacity 0.3s, transform 0.4s;
+  }
+  .fp-card:hover .fp-screenshot-wrap img { opacity: 1; transform: scale(1.015); }
+  .fp-content {
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .fp-content-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .fp-content-title span { color: var(--amber); }
+  .fp-content-tagline {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--fog);
+    letter-spacing: 0.8px;
+    line-height: 1.65;
+    margin-top: 4px;
+  }
+  .fp-narrative { display: flex; flex-direction: column; gap: 10px; }
+  .fp-block { padding: 10px 14px; border-left: 2px solid var(--line); }
+  .fp-block-amber { border-left-color: rgba(232,131,10,0.5); }
+  .fp-block-teal { border-left-color: rgba(0,184,150,0.5); }
+  .fp-block-label { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 5px; }
+  .fp-block-label-amber { color: var(--amber); }
+  .fp-block-label-teal { color: var(--teal); }
+  .fp-block p { font-size: 12px; color: #c0d0e0; line-height: 1.65; font-weight: 300; }
+  .fp-stack-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .fp-stack-label { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-right: 4px; flex-shrink: 0; }
+  .fp-stack-tag { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--amber); background: var(--amber-dim); border: 1px solid var(--line-strong); padding: 3px 8px; letter-spacing: 0.8px; }
+  .fp-note { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 0.3px; padding: 8px 12px; border: 1px solid var(--line); background: rgba(255,255,255,0.02); line-height: 1.5; }
+  .fp-note-icon { color: var(--amber); margin-right: 4px; }
+  .fp-actions { display: flex; gap: 10px; margin-top: auto; }
+
+  /* Concept projects section */
+  #concept-projects {
+    background: rgba(12,10,8,0.7);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--line);
+  }
+
   /* ── CONTACT ── */
   #cta { background: rgba(18,14,8,0.9); backdrop-filter: blur(20px); border-top: 1px solid var(--line); }
   .cta-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; align-items: start; }
@@ -614,6 +696,8 @@
     .story-banner { padding: 18px 32px; }
     footer { padding: 22px 32px; }
     .title-block { display: none; }
+    .fp-body { grid-template-columns: 1fr; }
+    .fp-screenshot-wrap { border-right: none; border-bottom: 1px solid var(--line); min-height: 260px; }
   }
 
   /* ── MOBILE (≤ 640px) ── */
@@ -643,6 +727,11 @@
     .auto-grid { grid-template-columns: 1fr; }
 
     .projects-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 32px; }
+
+    .fp-screenshot-wrap { min-height: 200px; }
+    .fp-content { padding: 20px 16px; gap: 16px; }
+    .fp-actions { flex-direction: column; }
+    .fp-actions .btn-primary, .fp-actions .btn-secondary { width: 100%; justify-content: center; }
 
     .cta-grid { grid-template-columns: 1fr; gap: 32px; }
     .form-row { grid-template-columns: 1fr; }
@@ -947,12 +1036,62 @@
   </div>
 </section>
 
-<!-- ══ PROJECTS ══ -->
+<!-- ══ FEATURED PROJECT ══ -->
 <section id="projects">
   <div class="section-inner">
-    <div class="section-label reveal">Projects</div>
-    <h2 class="section-title reveal">REAL-WORLD <span style="color:var(--teal)">CONCEPTS.</span><br/>PRODUCTION-READY THINKING.</h2>
-    <p class="projects-intro reveal">Built to demonstrate full-stack development, automation, and AI integration — from concept to production.</p>
+    <div class="section-label reveal">Featured Project &mdash; Live &amp; Deployed</div>
+    <h2 class="section-title reveal">REDLINE<span class="accent">IQ</span></h2>
+
+    <div class="fp-card reveal">
+      <div class="fp-card-header">
+        <span class="fp-card-header-left">PROJ NF-REDLINEIQ &nbsp;/&nbsp; FULL-STACK AI TOOL</span>
+        <span class="fp-card-header-right">● LIVE IN PRODUCTION</span>
+      </div>
+      <div class="fp-body">
+        <div class="fp-screenshot-wrap">
+          <img src="./redlineiq-screenshot.png" alt="RedlineIQ interface showing a redlined engineering PDF alongside the AI-generated structured checklist with markup classifications, drawing references, and confidence scores" />
+        </div>
+        <div class="fp-content">
+          <div>
+            <div class="fp-content-title">REDLINE<span>IQ</span></div>
+            <div class="fp-content-tagline">AI-powered extraction of engineering drawing redlines<br/>into structured, actionable checklists</div>
+          </div>
+          <div class="fp-narrative">
+            <div class="fp-block fp-block-amber">
+              <div class="fp-block-label fp-block-label-amber">Problem</div>
+              <p>Drafters lose significant time interpreting unstructured redline markup before any actual drafting begins.</p>
+            </div>
+            <div class="fp-block fp-block-teal">
+              <div class="fp-block-label fp-block-label-teal">Solution</div>
+              <p>RedlineIQ uses Claude's Vision API to extract every annotation from a redlined PDF and convert it into a structured checklist — complete with markup classification, drawing references, and confidence scores. Built to solve a problem I experienced firsthand in civil engineering and construction.</p>
+            </div>
+          </div>
+          <div class="fp-stack-row">
+            <span class="fp-stack-label">Stack</span>
+            <span class="fp-stack-tag">React</span>
+            <span class="fp-stack-tag">Node.js</span>
+            <span class="fp-stack-tag">Express</span>
+            <span class="fp-stack-tag">Claude Vision API</span>
+            <span class="fp-stack-tag">SQLite</span>
+            <span class="fp-stack-tag">Docker</span>
+          </div>
+          <div class="fp-note"><span class="fp-note-icon">⚠</span>First request may take 30–60s on the free tier while the service wakes up.</div>
+          <div class="fp-actions">
+            <a href="https://redlineiq-ukx6.onrender.com" target="_blank" rel="noopener" class="btn-primary">Live Demo →</a>
+            <a href="https://github.com/nick-furr/redlineiq" target="_blank" rel="noopener" class="btn-secondary">View Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONCEPT PROJECTS ══ -->
+<section id="concept-projects">
+  <div class="section-inner">
+    <div class="section-label reveal">Concept Projects (In Progress)</div>
+    <h2 class="section-title reveal">CLIENT-READY <span style="color:var(--teal)">TEMPLATES.</span><br/>PRODUCTION-READY THINKING.</h2>
+    <p class="projects-intro reveal">Full-stack builds in active development — demonstrating automation, AI integration, and real-world feature depth.</p>
 
     <div class="projects-grid">
 
@@ -960,7 +1099,7 @@
       <div class="project-card reveal">
         <div class="plan-header">
           <span class="plan-sheet-num">SHEET NF-001</span>
-          <span class="plan-revision">REV A — COMPLETE</span>
+          <span class="plan-revision">REV A — IN PROGRESS</span>
         </div>
         <div class="project-visual" style="background:linear-gradient(135deg,rgba(0,184,150,0.07),rgba(232,131,10,0.05))">
           <span class="pv-icon"><svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#00b896" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><!-- fork tines --><line x1="6" y1="2" x2="6" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="10" y1="2" x2="10" y2="6"/><!-- fork neck + handle --><path d="M6 6 Q8 8.5 8 10.5 L8 22"/><!-- knife blade --><path d="M16 2c1.5 1 2 2.5 2 4v2h-2"/><!-- knife handle --><line x1="16" y1="8" x2="16" y2="22"/></svg></span>

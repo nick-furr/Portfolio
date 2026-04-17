@@ -16,7 +16,15 @@ Personal portfolio and freelance services site for Nick Furr — a software engi
 - **Web Development** — Custom websites, full-stack applications, responsive design
 - **Automation & Systems** — Workflow automation, AI-powered tools, CRM pipelines, system integration
 
-## Concept Projects
+## Featured Project
+
+| Project | Description | Stack | Links |
+|---|---|---|---|
+| **RedlineIQ** | AI-powered extraction of engineering drawing redlines into structured, actionable checklists — built to solve a problem experienced firsthand in civil engineering. | React · Node.js · Express · Claude Vision API · SQLite · Docker | [Live Demo](https://redlineiq-ukx6.onrender.com) · [GitHub](https://github.com/nick-furr/redlineiq) |
+
+> Note: first request may take 30–60s on the free tier while the service wakes up.
+
+## Concept Projects (In Progress)
 
 | Project | Service Showcased | Status |
 |---|---|---|
