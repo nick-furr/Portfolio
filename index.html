@@ -1252,6 +1252,73 @@
     transform: translateY(-1px);
   }
 
+  /* ── AUDIENCE TABS ── */
+  .audience-tabs {
+    display: flex;
+    gap: 12px;
+    margin: 28px 0 36px;
+    flex-wrap: wrap;
+  }
+  .audience-tab {
+    flex: 1;
+    min-width: 240px;
+    padding: 18px 24px;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--fog);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    cursor: none;
+    transition: all 0.25s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    text-align: left;
+    position: relative;
+  }
+  .audience-tab .tab-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+  }
+  .audience-tab .tab-arrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    opacity: 0.4;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .audience-tab:hover {
+    border-color: rgba(232,131,10,0.4);
+    color: var(--white);
+  }
+  .audience-tab:hover .tab-arrow { opacity: 1; transform: translateX(3px); }
+  .audience-tab.active {
+    background: var(--amber);
+    color: #0c0a08;
+    border-color: var(--amber);
+    font-weight: 700;
+  }
+  .audience-tab.active .tab-num { color: rgba(12,10,8,0.6); }
+  .audience-tab.active .tab-arrow { opacity: 1; color: #0c0a08; }
+
+  /* Tab pane visibility */
+  .auto-pane { display: none; }
+  .auto-pane.active { display: block; animation: fade-in 0.4s ease; }
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 640px) {
+    .audience-tabs { flex-direction: column; gap: 10px; }
+    .audience-tab { min-width: 100%; padding: 16px 20px; }
+  }
+
   /* ═══ ABOUT ═══ */
   #about {
     background: rgba(18,14,8,0.88);
@@ -2131,13 +2198,58 @@
 
     <div class="tier-label reveal" style="margin-top:56px">
       <span class="tier-num">01</span>
-      <span class="tier-title">Automation — Construction &amp; Civil</span>
-      <span class="tier-note">// primary focus</span>
+      <span class="tier-title">Civil Engineering</span>
+      <span class="tier-note">// civil firms</span>
       <span class="tier-line"></span>
     </div>
     <div class="services-grid services-grid--auto reveal">
       <div class="service-card">
-        <div class="service-corner">AUT-01</div>
+        <div class="service-corner">CE-01</div>
+        <div class="service-title">Proposal & SOQ Drafter</div>
+        <div class="service-toggle" role="button" tabindex="0">
+          <span class="service-oneliner">RFP in → tailored draft out. Pulls past projects, bios, scope.</span>
+          <span class="service-expand-icon">+</span>
+        </div>
+        <div class="service-desc-collapsible">Drop in the RFP. System maps scope sections to your past projects, pulls relevant bios, and builds a draft you edit — not start from scratch. Typical time-to-submittal cut in half.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-corner">CE-02</div>
+        <div class="service-title">Spec & Code Assistant</div>
+        <div class="service-toggle" role="button" tabindex="0">
+          <span class="service-oneliner">Caltrans, AREMA, agency standards. Searchable. Citable.</span>
+          <span class="service-expand-icon">+</span>
+        </div>
+        <div class="service-desc-collapsible">Ask it a question, get an answer with the section number. Caltrans, AREMA, county standards, your firm's master spec — all searchable, all citable. No more hunting PDFs.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-corner">CE-03</div>
+        <div class="service-title">RFI Response Drafter</div>
+        <div class="service-toggle" role="button" tabindex="0">
+          <span class="service-oneliner">Construction admin, not field. Drafts CA-side responses from specs + drawings.</span>
+          <span class="service-expand-icon">+</span>
+        </div>
+        <div class="service-desc-collapsible">CA-side, not field. Upload the drawings and specs — system drafts the response with references. PM reviews and sends instead of drafts from memory.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-corner">CE-04</div>
+        <div class="service-title">QA/QC Sheet Check</div>
+        <div class="service-toggle" role="button" tabindex="0">
+          <span class="service-oneliner">Drawings vs. specs vs. notes. Inconsistencies flagged before submittal.</span>
+          <span class="service-expand-icon">+</span>
+        </div>
+        <div class="service-desc-collapsible">Upload the drawing set. System cross-references notes, details, and specs for conflicts and missing callouts. Catch it before the plan checker does.</div>
+      </div>
+    </div>
+
+    <div class="tier-label reveal" style="margin-top:64px">
+      <span class="tier-num">02</span>
+      <span class="tier-title">General Contracting</span>
+      <span class="tier-note">// gc firms</span>
+      <span class="tier-line"></span>
+    </div>
+    <div class="services-grid services-grid--web reveal">
+      <div class="service-card">
+        <div class="service-corner">GC-01</div>
         <div class="service-title">RFI / Submittal Flow</div>
         <div class="service-toggle" role="button" tabindex="0">
           <span class="service-oneliner">Intake → route → remind → close. No inbox archaeology.</span>
@@ -2146,7 +2258,7 @@
         <div class="service-desc-collapsible">Forms auto-populate the tracker. Reviewers get nudged. Overdue items escalate. Closeout logs write themselves. Your PMs stop playing detective and start actually running the job.</div>
       </div>
       <div class="service-card">
-        <div class="service-corner">AUT-02</div>
+        <div class="service-corner">GC-02</div>
         <div class="service-title">Daily Report Engine</div>
         <div class="service-toggle" role="button" tabindex="0">
           <span class="service-oneliner">Field captures photos + notes. Report writes itself.</span>
@@ -2155,7 +2267,7 @@
         <div class="service-desc-collapsible">Superintendent dictates from the field. System pulls weather, logs crew counts, attaches photos, flags delays, formats the doc, emails the owner. PM reviews, doesn't write.</div>
       </div>
       <div class="service-card">
-        <div class="service-corner">AUT-03</div>
+        <div class="service-corner">GC-03</div>
         <div class="service-title">Punch &amp; Closeout</div>
         <div class="service-toggle" role="button" tabindex="0">
           <span class="service-oneliner">Photo → assigned punch item → sign-off. Days, not weeks.</span>
@@ -2164,7 +2276,7 @@
         <div class="service-desc-collapsible">Snap a photo, tag the sub, auto-assign, track to sign-off. Owners get a live dashboard instead of a walk-through-and-pray.</div>
       </div>
       <div class="service-card">
-        <div class="service-corner">AUT-04</div>
+        <div class="service-corner">GC-04</div>
         <div class="service-title">Doc Review AI</div>
         <div class="service-toggle" role="button" tabindex="0">
           <span class="service-oneliner">AI flags conflicts between plans, specs, and change orders.</span>
@@ -2172,28 +2284,10 @@
         </div>
         <div class="service-desc-collapsible">Upload the set. AI surfaces spec-to-drawing mismatches, missing details, and the conflicts that usually come back as RFIs a month later. Catch it before it costs.</div>
       </div>
-      <div class="service-card">
-        <div class="service-corner">AUT-05</div>
-        <div class="service-title">Stack Integrations</div>
-        <div class="service-toggle" role="button" tabindex="0">
-          <span class="service-oneliner">Procore · Bluebeam · Civil 3D · M365 — in sync.</span>
-          <span class="service-expand-icon">+</span>
-        </div>
-        <div class="service-desc-collapsible">Pull data out, push reports back. I don't ask your team to switch tools — I make the ones you have talk to each other.</div>
-      </div>
-      <div class="service-card">
-        <div class="service-corner">AUT-06</div>
-        <div class="service-title">Owner Reporting</div>
-        <div class="service-toggle" role="button" tabindex="0">
-          <span class="service-oneliner">Weekly rollups + WIP, generated from live project data.</span>
-          <span class="service-expand-icon">+</span>
-        </div>
-        <div class="service-desc-collapsible">Your PMs stop building PowerPoints at 10 PM Thursday. Reports assemble themselves from the data that's already there.</div>
-      </div>
     </div>
 
     <div class="tier-label reveal" style="margin-top:64px">
-      <span class="tier-num">02</span>
+      <span class="tier-num">03</span>
       <span class="tier-title">Full-Stack Web</span>
       <span class="tier-note">// supporting work</span>
       <span class="tier-line"></span>
@@ -2265,48 +2359,96 @@
 <section id="automation">
   <div class="section-inner">
     <div class="sheet-marker">SHT <strong>06</strong> / 08</div>
-    <div class="section-label reveal">Automation <span class="idx">· TOOLS</span></div>
-    <h2 class="section-title reveal">SYSTEMS THAT RUN<br/><span class="accent">WHILE YOU SLEEP.</span></h2>
+    <div class="section-label reveal">Automation — Built For Your Workflow</div>
+    <h2 class="section-title reveal">CUSTOM AI TOOLS<br/>FOR <span class="accent">YOUR STACK</span></h2>
     <p class="auto-intro reveal">
-      If your PMs are manually chasing RFIs, compiling daily reports, or hand-building owner updates at 9 PM Thursday — <strong>all of that is machine work now.</strong>
+      Off-the-shelf contech is built for the average firm. <strong>I build for yours.</strong>
+      Pick a workflow that's eating your week — I deliver a tool your team owns in 2–4 weeks.
     </p>
-    <div class="auto-grid">
-      <div class="auto-card reveal">
-        <span class="auto-corner">AUT-01</span>
-        <span class="auto-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0ad3a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="1"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
-        <div class="auto-title">RFI Intake</div>
-        <div class="auto-desc">Submitted via form, auto-routed, tracked to closeout. Inbox triage: obsolete.</div>
+
+    <div class="audience-tabs reveal" role="tablist" aria-label="Audience selector">
+      <button
+        class="audience-tab active"
+        data-target="pane-civil"
+        role="tab"
+        aria-selected="true"
+        tabindex="0">
+        <span class="tab-num">01</span>
+        <span>Civil Engineering</span>
+        <span class="tab-arrow">→</span>
+      </button>
+      <button
+        class="audience-tab"
+        data-target="pane-gc"
+        role="tab"
+        aria-selected="false"
+        tabindex="0">
+        <span class="tab-num">02</span>
+        <span>General Contracting</span>
+        <span class="tab-arrow">→</span>
+      </button>
+    </div>
+
+    <!-- CIVIL PANE (default active) -->
+    <div class="auto-pane active" id="pane-civil" role="tabpanel">
+      <div class="auto-grid">
+        <div class="auto-card reveal">
+          <div class="auto-corner" style="position:absolute;top:14px;right:14px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1px;color:var(--teal);">CE-01</div>
+          <div class="auto-title">Proposal & SOQ Drafter</div>
+          <div class="auto-desc">RFP in → tailored draft out. Pulls past projects, bios, scope.</div>
+        </div>
+        <div class="auto-card reveal reveal-delay-1">
+          <div class="auto-corner" style="position:absolute;top:14px;right:14px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1px;color:var(--amber);">CE-02</div>
+          <div class="auto-title">Spec & Code Assistant</div>
+          <div class="auto-desc">Caltrans, AREMA, agency standards. Searchable. Citable.</div>
+        </div>
+        <div class="auto-card reveal reveal-delay-2">
+          <div class="auto-corner" style="position:absolute;top:14px;right:14px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1px;color:var(--teal);">CE-03</div>
+          <div class="auto-title">RFI Response Drafter</div>
+          <div class="auto-desc">Construction admin, not field. Drafts CA-side responses from specs + drawings.</div>
+        </div>
+        <div class="auto-card reveal reveal-delay-3">
+          <div class="auto-corner" style="position:absolute;top:14px;right:14px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1px;color:var(--amber);">CE-04</div>
+          <div class="auto-title">QA/QC Sheet Check</div>
+          <div class="auto-desc">Drawings vs. specs vs. notes. Inconsistencies flagged before submittal.</div>
+        </div>
       </div>
-      <div class="auto-card reveal reveal-delay-1">
-        <span class="auto-corner">AUT-02</span>
-        <span class="auto-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0ad3a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></span>
-        <div class="auto-title">Submittal Tracker</div>
-        <div class="auto-desc">Logged on receipt. Reviewers nudged. Overdue items escalate on their own.</div>
+    </div>
+
+    <!-- GC PANE -->
+    <div class="auto-pane" id="pane-gc" role="tabpanel">
+      <div class="auto-grid">
+        <div class="auto-card reveal">
+          <div class="auto-corner" style="position:absolute;top:14px;right:14px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1px;color:var(--amber);">GC-01</div>
+          <div class="auto-title">RFI / Submittal Flow</div>
+          <div class="auto-desc">Intake → route → remind → close. No inbox archaeology.</div>
+        </div>
+        <div class="auto-card reveal reveal-delay-1">
+          <div class="auto-corner" style="position:absolute;top:14px;right:14px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1px;color:var(--teal);">GC-02</div>
+          <div class="auto-title">Daily Report Engine</div>
+          <div class="auto-desc">Field captures photos + notes. Report writes itself.</div>
+        </div>
+        <div class="auto-card reveal reveal-delay-2">
+          <div class="auto-corner" style="position:absolute;top:14px;right:14px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1px;color:var(--amber);">GC-03</div>
+          <div class="auto-title">Punch & Closeout</div>
+          <div class="auto-desc">Photo → assigned punch item → sign-off. Days, not weeks.</div>
+        </div>
+        <div class="auto-card reveal reveal-delay-3">
+          <div class="auto-corner" style="position:absolute;top:14px;right:14px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1px;color:var(--teal);">GC-04</div>
+          <div class="auto-title">Doc Review AI</div>
+          <div class="auto-desc">AI flags conflicts between plans, specs, and change orders.</div>
+        </div>
       </div>
-      <div class="auto-card reveal reveal-delay-2">
-        <span class="auto-corner">AUT-03</span>
-        <span class="auto-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0ad3a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
-        <div class="auto-title">Daily Reports</div>
-        <div class="auto-desc">Field dictates, system compiles — weather, crew, delays, photos. Done by 5:30.</div>
-      </div>
-      <div class="auto-card reveal reveal-delay-3">
-        <span class="auto-corner">AUT-04</span>
-        <span class="auto-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0ad3a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M9 12l2 2 4-4"/></svg></span>
-        <div class="auto-title">Punch Automation</div>
-        <div class="auto-desc">Photo → sub-specific item → sign-off tracked. Closeout in days.</div>
-      </div>
-      <div class="auto-card reveal reveal-delay-4">
-        <span class="auto-corner">AUT-05</span>
-        <span class="auto-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0ad3a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></span>
-        <div class="auto-title">Plan Review AI</div>
-        <div class="auto-desc">Spec-to-drawing mismatches and missing references, flagged pre-RFI.</div>
-      </div>
-      <div class="auto-card reveal reveal-delay-5">
-        <span class="auto-corner">AUT-06</span>
-        <span class="auto-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0ad3a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></span>
-        <div class="auto-title">Owner Pipeline</div>
-        <div class="auto-desc">Weekly reports + WIP, pulled from real data. PowerPoint Thursdays are over.</div>
-      </div>
+    </div>
+
+    <!-- Tech stack row -->
+    <div class="auto-stack reveal">
+      <span class="stack-label">Stack ▸</span>
+      <span class="stack-tag">Anthropic API</span>
+      <span class="stack-tag">Next.js</span>
+      <span class="stack-tag">Supabase</span>
+      <span class="stack-tag">Vercel</span>
+      <span class="stack-tag">Civil 3D · Bluebeam · Procore</span>
     </div>
   </div>
 </section>
@@ -2391,11 +2533,9 @@
           <span class="spec-key">Code Stack</span>
           <span class="spec-val">
             <span class="tag">React</span>
-            <span class="tag">Next.js</span>
             <span class="tag">Node</span>
             <span class="tag">TypeScript</span>
             <span class="tag">PostgreSQL</span>
-            <span class="tag">Supabase</span>
             <span class="tag">Tailwind</span>
             <span class="tag">Docker</span>
             <span class="tag">Claude</span>
@@ -2850,6 +2990,26 @@
       }
     }
     animate();
+  })();
+
+  // ── Audience tab switching ──
+  (function() {
+    const tabs = document.querySelectorAll('.audience-tab');
+    const panes = document.querySelectorAll('.auto-pane');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.getAttribute('data-target');
+        tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+        panes.forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        const pane = document.getElementById(target);
+        if (pane) pane.classList.add('active');
+      });
+      tab.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tab.click(); }
+      });
+    });
   })();
 </script>
 </body>
