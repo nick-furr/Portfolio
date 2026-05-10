@@ -1882,7 +1882,7 @@
     gtag('config', 'G-5G6NDPED2Z');
   </script>
 </head>
-<body data-hero="station" data-bg="terrain">
+<body data-hero="note" data-bg="terrain">
 
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
@@ -2761,27 +2761,33 @@
   const state = { ...TWEAK_DEFAULTS };
   applyTweaks(state);
 
-  document.querySelectorAll('.tw-opt').forEach(btn => {
-    btn.addEventListener('click', () => {
-      state[btn.dataset.tw] = btn.dataset.val;
-      applyTweaks(state);
+  const isDev = new URLSearchParams(window.location.search).get('dev') === '1';
+  if (!isDev) {
+    document.getElementById('tw-toggle').remove();
+    document.getElementById('tweaks-panel').remove();
+  } else {
+    document.querySelectorAll('.tw-opt').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state[btn.dataset.tw] = btn.dataset.val;
+        applyTweaks(state);
+      });
     });
-  });
 
-  const twToggle = document.getElementById('tw-toggle');
-  const twPanel = document.getElementById('tweaks-panel');
-  function toggleTweaks(forceClose) {
-    const open = forceClose ? false : twPanel.classList.toggle('open');
-    if (forceClose) twPanel.classList.remove('open');
-    twToggle.style.display = (forceClose || !open) ? 'flex' : 'none';
-  }
-  twToggle.addEventListener('click', () => toggleTweaks());
-  document.getElementById('tw-close').addEventListener('click', () => toggleTweaks(true));
-  document.addEventListener('keydown', e => {
-    if (e.key === 't' && !e.ctrlKey && !e.metaKey && !['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) {
-      toggleTweaks();
+    const twToggle = document.getElementById('tw-toggle');
+    const twPanel = document.getElementById('tweaks-panel');
+    function toggleTweaks(forceClose) {
+      const open = forceClose ? false : twPanel.classList.toggle('open');
+      if (forceClose) twPanel.classList.remove('open');
+      twToggle.style.display = (forceClose || !open) ? 'flex' : 'none';
     }
-  });
+    twToggle.addEventListener('click', () => toggleTweaks());
+    document.getElementById('tw-close').addEventListener('click', () => toggleTweaks(true));
+    document.addEventListener('keydown', e => {
+      if (e.key === 't' && !e.ctrlKey && !e.metaKey && !['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) {
+        toggleTweaks();
+      }
+    });
+  }
 
   // ════════════════════════════════════════════════════════════
   // ── THREE.JS TERRAIN (unchanged behavior, new palette) ──
