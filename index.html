@@ -358,6 +358,21 @@
     background: var(--bg);
     padding: 2px 12px;
   }
+  .work-feature .loom-embed {
+    margin-top: 16px;
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--line-2);
+    background: var(--bg);
+    overflow: hidden;
+  }
+  .work-feature .loom-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
   .work-feature .feature-body {
     display: grid;
     grid-template-columns: 220px 1fr;
@@ -986,10 +1001,14 @@
         <img src="redlineiq-screenshot-new.png" alt="RedlineIQ — extracted redline checklist from a marked-up PDF"/>
       </div>
 
-      <!-- Loom slot — drop the embed iframe here when recorded -->
-      <div class="loom-slot" aria-label="Walkthrough video placeholder">
-        <span class="loom-label">Walkthrough — coming soon</span>
-        <span class="loom-title">3-min Loom: a real redline, start to checklist</span>
+      <div class="loom-embed" aria-label="RedlineIQ walkthrough video">
+        <iframe
+          src="https://www.loom.com/embed/db6edb1fedf340e3a901dd07fc224867"
+          title="RedlineIQ walkthrough"
+          allow="fullscreen; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"></iframe>
       </div>
 
       <div class="feature-body">
