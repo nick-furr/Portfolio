@@ -154,16 +154,25 @@
   .hero-lede {
     font-family: var(--f-serif);
     font-weight: 300;
-    font-size: clamp(40px, 5.6vw, 76px);
+    font-size: clamp(44px, 6.4vw, 88px);
     line-height: 1.04;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
     color: var(--ink);
-    max-width: 18ch;
+    max-width: 22ch;
   }
   .hero-lede em {
     font-style: italic;
     color: var(--accent);
     font-weight: 400;
+  }
+  .hero-sub {
+    margin-top: 28px;
+    font-family: var(--f-serif);
+    font-weight: 400;
+    font-size: clamp(18px, 1.6vw, 22px);
+    line-height: 1.5;
+    color: var(--ink-2);
+    max-width: 48ch;
   }
   .hero-meta {
     display: grid;
@@ -949,13 +958,14 @@
   <div class="wrap">
     <div class="hero-grid">
       <h1 class="hero-lede">
-        Software engineer with a <em>civil engineering</em> background. I build automation for construction and civil firms.
+        Civil engineer. <em>Software builder.</em> Bay Area.
       </h1>
+      <p class="hero-sub">I build automation and full-stack tools for the construction and civil firms I used to work for.</p>
 
       <div class="hero-meta">
         <div class="meta-block">
-          <span class="eyebrow">Based</span>
-          <p style="margin-top:10px">Burlingame, CA. Five years on jobsites and in CAD before I shipped my first production app — now I build the tools I wish I'd had.</p>
+          <span class="eyebrow">Background</span>
+          <p style="margin-top:10px">Five years on jobsites and in CAD — Nibbi Bros, Westland Group, BKF Engineers — before I shipped my first production app. Now I build the tools I wish I'd had.</p>
         </div>
         <div class="meta-block">
           <span class="eyebrow">Currently</span>
