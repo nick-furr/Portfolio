@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>OG image — Nick Furr</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;1,8..60,400&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg:        #f1ebde;
+    --bg-2:      #e7dfcd;
+    --paper:     #f8f2e3;
+    --ink:       #161410;
+    --ink-2:     #36322a;
+    --muted:     #6f6757;
+    --line:      #cfc6b0;
+    --line-2:    #b9ad91;
+    --accent:    #b04a14;
+    --accent-2:  #d35e22;
+
+    --f-serif: 'Source Serif 4', Georgia, serif;
+    --f-sans:  'Geist', system-ui, sans-serif;
+    --f-mono:  'JetBrains Mono', ui-monospace, monospace;
+    --f-cond:  'Saira Condensed', 'Oswald', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body { width: 1200px; height: 630px; overflow: hidden; background: var(--bg); }
+  body { font-family: var(--f-sans); color: var(--ink); }
+
+  .og {
+    width: 1200px;
+    height: 630px;
+    background: var(--bg);
+    color: var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .og::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--line) 35%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--line) 35%, transparent) 1px, transparent 1px);
+    background-size: 60px 60px;
+    background-position: 60px 60px;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
+  .og-frame {
+    position: absolute;
+    inset: 32px 32px auto 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    z-index: 2;
+  }
+  .frame-brand {
+    font-family: var(--f-serif);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .frame-brand .dot { color: var(--accent); }
+  .frame-meta {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: right;
+    line-height: 1.6;
+  }
+  .frame-meta .accent { color: var(--accent); }
+
+  .og-content {
+    position: absolute;
+    inset: 0;
+    padding: 110px 80px 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  .og-lede {
+    font-family: var(--f-serif);
+    font-weight: 300;
+    font-size: 92px;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    max-width: 18ch;
+  }
+  .og-lede em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+  .og-sub {
+    margin-top: 28px;
+    font-family: var(--f-serif);
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-2);
+    max-width: 52ch;
+  }
+
+  .og-foot {
+    position: absolute;
+    left: 32px; right: 32px; bottom: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    z-index: 2;
+  }
+  .og-url {
+    font-family: var(--f-mono);
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+  }
+  .og-url .accent { color: var(--accent); }
+
+  .og-corner {
+    position: absolute;
+    width: 24px; height: 24px;
+    border: 1px solid var(--accent);
+    z-index: 2;
+  }
+  .og-corner.tl { top: 18px; left: 18px; border-right: none; border-bottom: none; }
+  .og-corner.tr { top: 18px; right: 18px; border-left: none; border-bottom: none; }
+  .og-corner.bl { bottom: 18px; left: 18px; border-right: none; border-top: none; }
+  .og-corner.br { bottom: 18px; right: 18px; border-left: none; border-top: none; }
+</style>
+</head>
+<body>
+  <div class="og">
+    <span class="og-corner tl"></span>
+    <span class="og-corner tr"></span>
+    <span class="og-corner bl"></span>
+    <span class="og-corner br"></span>
+
+    <div class="og-frame">
+      <div class="frame-brand">Nick Furr<span class="dot">.</span></div>
+      <div class="frame-meta">
+        <div><span class="accent">SHT</span> &middot; NF&mdash;2026</div>
+        <div>Portfolio &amp; services</div>
+      </div>
+    </div>
+
+    <div class="og-content">
+      <h1 class="og-lede">
+        Civil engineer. <em>Software builder.</em> Bay Area.
+      </h1>
+      <p class="og-sub">Automation and full-stack tools for the construction and civil firms I used to work for.</p>
+    </div>
+
+    <div class="og-foot">
+      <span class="og-url"><span class="accent">&rarr;</span>&nbsp;&nbsp;nickfurr.com</span>
+    </div>
+  </div>
+</body>
+</html>
