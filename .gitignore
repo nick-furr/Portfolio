@@ -1,0 +1,4 @@
+.claude/settings.local.json
+.claude/history.jsonl
+.claude/projects/
+.tmp.driveupload/
