@@ -1,4 +1,6 @@
 .claude/settings.local.json
 .claude/history.jsonl
 .claude/projects/
+.claude/design-extract*/
+.claude/worktrees/
 .tmp.driveupload/
