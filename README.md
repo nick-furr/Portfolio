@@ -20,7 +20,7 @@ Personal portfolio and freelance services site for Nick Furr — a software engi
 
 | Project | Description | Stack | Links |
 |---|---|---|---|
-| **RedlineIQ** | AI-powered extraction of engineering drawing redlines into structured, actionable checklists — built to solve a problem experienced firsthand in civil engineering. | React · Node.js · Express · Claude Vision API · SQLite · Docker | [Live Demo](https://redlineiq-ukx6.onrender.com) · [GitHub](https://github.com/nick-furr/redlineiq) |
+| **RedlineIQ** | AI-powered extraction of engineering drawing redlines into structured, actionable checklists — built to solve a problem experienced firsthand in civil engineering. | React · Node.js · Express · Claude Vision API · SQLite · Docker | [Live Demo](https://redlineiq-app.onrender.com) · [GitHub](https://github.com/nick-furr/redlineiq) |
 
 > Note: first request may take 30–60s on the free tier while the service wakes up.
 
