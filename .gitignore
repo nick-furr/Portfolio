@@ -4,3 +4,5 @@
 .claude/design-extract*/
 .claude/worktrees/
 .tmp.driveupload/
+.playwright-mcp/
+live-site-current.png
