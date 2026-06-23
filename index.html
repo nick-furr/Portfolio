@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#101316"/>
 <title>Nick Furr — Civil engineer. Software builder. Bay Area.</title>
 <meta name="description" content="Civil engineer turned software builder. Portfolio of full-stack and automation tools for construction and civil work — RedlineIQ, Akane, and more."/>
 <link rel="canonical" href="https://nickfurr.com"/>
@@ -40,9 +41,9 @@
     --line:      #cfc6b0;
     --line-2:    #b9ad91;
     --rule:      #161410;
-    --accent:    #b04a14;       /* deeper, more saturated rust */
-    --accent-2:  #d35e22;
-    --accent-tint: #ecd9bf;
+    --accent:    #9b7cff;       /* violet pop (final overrides below) */
+    --accent-2:  #b9a3ff;
+    --accent-tint: #2a3138;
 
     --f-serif: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
     --f-sans:  'Geist', system-ui, -apple-system, sans-serif;
@@ -743,7 +744,7 @@
     color: var(--bg);
     max-width: 14ch;
   }
-  #contact h2 em { color: #e08442; font-style: italic; }
+  #contact h2 em { color: var(--pop); font-style: italic; }
   #contact .lede {
     font-size: 17px;
     color: #c5beac;
@@ -782,7 +783,7 @@
     color: var(--bg);
   }
   .contact-row a.v { transition: color 0.15s; }
-  .contact-row a.v:hover { color: #e08442; }
+  .contact-row a.v:hover { color: var(--pop); }
 
   /* booking card (replaces form) */
   .booking-card {
@@ -832,7 +833,7 @@
     top: 11px;
     width: 12px;
     height: 1px;
-    background: #e08442;
+    background: var(--pop);
   }
   .booking-btn {
     display: inline-flex;
@@ -842,9 +843,9 @@
     height: 52px;
     padding: 0 26px;
     margin-top: 8px;
-    background: #e08442;
+    background: var(--pop);
     color: var(--ink);
-    border: 1px solid #e08442;
+    border: 1px solid var(--pop);
     border-radius: 999px;
     font-family: var(--f-sans);
     font-size: 15px;
@@ -855,7 +856,7 @@
   }
   .booking-btn:hover {
     background: transparent;
-    color: #e08442;
+    color: var(--pop);
   }
   .booking-btn .arrow { transition: transform 0.18s; }
   .booking-btn:hover .arrow { transform: translateX(3px); }
@@ -873,8 +874,8 @@
     transition: color 0.15s, border-color 0.15s;
   }
   .booking-or a:hover {
-    color: #e08442;
-    border-color: #e08442;
+    color: var(--pop);
+    border-color: var(--pop);
   }
 
   /* ─────────── Footer ─────────── */
@@ -941,6 +942,30 @@
   gtag('js', new Date());
   gtag('config', 'G-5G6NDPED2Z');
 </script>
+
+<style id="metal-overrides">
+:root{
+  --bg:#101316;--bg-2:#171b1f;--paper:#161a1e;
+  --ink:#e9ecef;--ink-2:#b4babf;--muted:#838a90;--muted-2:#5f666c;
+  --line:#262b30;--line-2:#353b42;--rule:#3a4147;
+  --pop:#9b7cff;--accent:#9b7cff;--accent-2:#b9a3ff;--accent-tint:#2a3138;
+}
+/* chrome on display italics only — the signature */
+.hero-lede em,.section-head h2 em,.about-prose em,#contact h2 em{
+  background:linear-gradient(100deg,#6e7479 0%,#c5cbd0 14%,#ffffff 27%,#a7adb3 41%,#7c8288 53%,#eef1f4 69%,#b4babf 83%,#878d93 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent; font-style:italic;
+}
+/* pop CTA chip with dark text */
+.booking-btn{background:var(--pop);border-color:var(--pop);color:#0b0d10;}
+.booking-btn:hover{background:transparent;color:var(--pop);}
+/* dark-ground structural fixes */
+#contact{background:#13171b;color:#e9ecef;}
+#contact h2{color:#f1f3f5;}
+#contact .contact-row .v{color:#e9ecef;}
+.booking-card{background:#171c21;border-color:#272d33;}
+.booking-card h3{color:#f1f3f5;}
+footer{background:#0c0e11;color:#838a90;border-top-color:#262b30;}
+footer a:hover{color:#e9ecef;}
+</style>
 </head>
 <body>
 
