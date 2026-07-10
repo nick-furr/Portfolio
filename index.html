@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="theme-color" content="#101316"/>
 <title>Nick Furr — Civil engineer. Software builder. Bay Area.</title>
-<meta name="description" content="Civil engineer turned software builder. Portfolio of full-stack and automation tools for construction and civil work — RedlineIQ, Akane, and more."/>
+<meta name="description" content="Civil engineer turned software builder. Production AI tools for construction and civil work — plan review, proposal editing, grounded RAG, and MCP tooling."/>
 <link rel="canonical" href="https://nickfurr.com"/>
 
 <meta property="og:title" content="Nick Furr — Civil engineer. Software builder. Bay Area."/>
@@ -411,49 +411,45 @@
   }
   .work-secondary-label .rule { flex: 1; height: 1px; background: var(--line); }
 
-  /* Compact tile — Akane */
-  .work-compact {
+  /* Pinned GitHub repos — minimalist grid */
+  .repo-grid {
     display: grid;
-    grid-template-columns: 360px 1fr;
-    gap: 40px;
-    padding: 32px 0 16px;
-    align-items: start;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-bottom: 1px solid var(--line);
   }
-  .work-compact .compact-shot {
-    border: 1px solid var(--line);
-    background: var(--paper);
-    overflow: hidden;
-    aspect-ratio: 4 / 3;
+  .repo {
+    padding: 28px 32px 28px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
-  .work-compact .compact-shot img {
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: top center;
+  .repo + .repo {
+    padding-left: 32px;
+    border-left: 1px solid var(--line);
   }
-  .work-compact h3 {
+  .repo .repo-lang {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .repo h3 {
     font-family: var(--f-serif);
-    font-size: 26px;
+    font-size: 22px;
     font-weight: 400;
     color: var(--ink);
     line-height: 1.15;
     letter-spacing: -0.01em;
   }
-  .work-compact .compact-meta {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-bottom: 10px;
-    font-family: var(--f-mono);
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    color: var(--muted);
-  }
-  .work-compact .compact-meta .status { color: var(--accent); }
-  .work-compact .tagline {
-    font-size: 15px;
+  .repo p {
+    font-size: 14.5px;
     color: var(--ink-2);
     line-height: 1.6;
-    margin-top: 8px;
-    max-width: 52ch;
+    flex: 1;
+  }
+  .repo-grid-foot {
+    margin-top: 24px;
   }
 
   .work-item {
@@ -913,7 +909,10 @@
     .work-feature .feature-header { grid-template-columns: 1fr; gap: 16px; }
     .work-feature .feature-body { grid-template-columns: 1fr; gap: 16px; }
     .work-feature .feature-body > div:first-child { display: none; }
-    .work-compact { grid-template-columns: 1fr; gap: 20px; padding: 24px 0; }
+    .repo-grid { grid-template-columns: 1fr; }
+    .repo { padding: 24px 0; border-bottom: 1px solid var(--line); }
+    .repo:last-child { border-bottom: none; }
+    .repo + .repo { padding-left: 0; border-left: none; }
     .booking-card { padding: 24px; }
     .service-grid { grid-template-columns: 1fr; }
     .service:nth-child(odd) { padding-right: 0; border-right: none; }
@@ -996,7 +995,7 @@ footer a:hover{color:#e9ecef;}
         </div>
         <div class="meta-block">
           <span class="eyebrow">Currently</span>
-          <p style="margin-top:10px">Building tools at the intersection of civil engineering and software. RedlineIQ is live; more in the works.</p>
+          <p style="margin-top:10px">Building AI tools at the intersection of civil engineering and software. RedlineIQ is live; more on GitHub.</p>
           <div class="hero-actions">
             <a href="#contact" class="btn">Get in touch <span class="arrow">→</span></a>
             <a href="#work" class="text-link">See work <span class="arrow">↗</span></a>
@@ -1014,8 +1013,8 @@ footer a:hover{color:#e9ecef;}
       <span class="section-num">01<span class="slash">/</span><span class="total">03</span></span>
       <span class="eyebrow">Selected work</span>
       <div>
-        <h2>A live tool, and a restaurant in flight.</h2>
-        <p class="lede">Both solve problems I ran into firsthand.</p>
+        <h2>Production AI tools for engineering work.</h2>
+        <p class="lede">All built from problems I ran into firsthand — on jobsites, in CAD, and in agency review.</p>
       </div>
     </div>
 
@@ -1058,12 +1057,12 @@ footer a:hover{color:#e9ecef;}
             </div>
             <div class="detail-block">
               <div class="label">Approach</div>
-              <p>Claude Vision parses the markup; a Node service classifies items, links them to sheet numbers, and produces a punch list a drafter can work from.</p>
+              <p>A source-type router parses digital PDFs losslessly and falls back to Claude Vision for scanned sheets. An eval harness with labeled golden sets and a versioned prompt registry keeps accuracy honest.</p>
             </div>
           </div>
 
           <div class="work-stack">
-            <span>React</span><span>Node</span><span>Express</span><span>Claude Vision</span><span>SQLite</span><span>Docker</span>
+            <span>React</span><span>Node</span><span>Express</span><span>Claude (Vision + text)</span><span>SQLite</span><span>Langfuse</span><span>Sentry</span>
           </div>
 
           <div class="work-actions">
@@ -1076,31 +1075,34 @@ footer a:hover{color:#e9ecef;}
 
     <!-- Secondary divider -->
     <div class="work-secondary-label">
-      <span class="label">W—02 · Also in flight</span>
+      <span class="label">W—02 · Pinned on GitHub</span>
       <span class="rule"></span>
     </div>
 
-    <!-- Compact: Akane -->
-    <article class="work-compact">
-      <div class="compact-shot">
-        <img src="akane-screenshot.png" alt="Akane — counter-first sushi restaurant with live booking"/>
-      </div>
-      <div>
-        <div class="compact-meta">
-          <span>2026</span>
-          <span>Full-stack · reservations</span>
-        </div>
-        <h3>Akane</h3>
-        <p class="tagline">Counter-first sushi restaurant with a live reservation system, email confirmations, and a protected owner dashboard. Next: an AI layer for conversational booking and natural-language owner queries — <em>"how many covers last Saturday?"</em></p>
-        <div class="work-stack">
-          <span>Next.js</span><span>TypeScript</span><span>Supabase</span><span>Resend</span><span>Vercel</span>
-        </div>
-        <div class="work-actions">
-          <a href="https://akane.nickfurr.com/" target="_blank" rel="noopener" class="btn btn-ghost">Live demo <span class="arrow">→</span></a>
-          <a href="https://github.com/nick-furr/akane" target="_blank" rel="noopener" class="text-link">Source <span class="arrow">↗</span></a>
-        </div>
-      </div>
-    </article>
+    <!-- Pinned repos -->
+    <div class="repo-grid">
+      <article class="repo">
+        <span class="repo-lang">TypeScript</span>
+        <h3>Proposal Editor</h3>
+        <p>AI editing for designed AEC proposal PDFs — describe a change in plain language, review a word-level diff, export to Word with native tracked changes.</p>
+        <a href="https://github.com/nick-furr/proposal-editor" target="_blank" rel="noopener" class="text-link">Source <span class="arrow">↗</span></a>
+      </article>
+      <article class="repo">
+        <span class="repo-lang">Python</span>
+        <h3>Benefits Rep Copilot</h3>
+        <p>Grounded RAG QA for benefits plan documents — client-filtered retrieval, verified citations, and a CI-gated eval that holds refusal accuracy as a hard floor.</p>
+        <a href="https://github.com/nick-furr/benefits-rep-copilot" target="_blank" rel="noopener" class="text-link">Source <span class="arrow">↗</span></a>
+      </article>
+      <article class="repo">
+        <span class="repo-lang">JavaScript</span>
+        <h3>Leads Toolkit</h3>
+        <p>Two MCP servers — Google Places search and opportunity scoring — that turn hours of per-firm prospect research into one Claude agent workflow.</p>
+        <a href="https://github.com/nick-furr/leads-toolkit" target="_blank" rel="noopener" class="text-link">Source <span class="arrow">↗</span></a>
+      </article>
+    </div>
+    <div class="repo-grid-foot">
+      <a href="https://github.com/nick-furr" target="_blank" rel="noopener" class="text-link">All repositories on GitHub <span class="arrow">↗</span></a>
+    </div>
   </div>
 </section>
 
@@ -1265,28 +1267,28 @@ footer a:hover{color:#e9ecef;}
 
         <div class="timeline">
           <div class="tl-row">
-            <span class="tl-year">2015</span>
-            <span class="tl-what"><strong>Cal Poly Pomona</strong> — B.S. Civil Engineering</span>
+            <span class="tl-year">2016</span>
+            <span class="tl-what"><strong>Nibbi Bros</strong> — Project Engineer, summers 2016 &amp; 2017. SFO garage, LIHTC housing.</span>
           </div>
           <div class="tl-row">
             <span class="tl-year">2018</span>
-            <span class="tl-what"><strong>Nibbi Bros</strong> — Project Engineer. SFO garage, LIHTC housing.</span>
-          </div>
-          <div class="tl-row">
-            <span class="tl-year">2019</span>
             <span class="tl-what"><strong>Westland Group</strong> — SoCal Gas as-builts. First production VBA.</span>
           </div>
           <div class="tl-row">
-            <span class="tl-year">2020</span>
-            <span class="tl-what"><strong>BKF Engineers</strong> — Lead Civil 3D Designer.</span>
+            <span class="tl-year">2019</span>
+            <span class="tl-what"><strong>Cal Poly Pomona</strong> — B.S. Civil Engineering. EIT.</span>
+          </div>
+          <div class="tl-row">
+            <span class="tl-year">2019</span>
+            <span class="tl-what"><strong>BKF Engineers</strong> — Design Engineer, lead Civil 3D designer through 2021.</span>
           </div>
           <div class="tl-row">
             <span class="tl-year">2021&nbsp;→</span>
-            <span class="tl-what">Full-time pivot to software. Five years building React, Node, and production apps.</span>
+            <span class="tl-what">Independent — workflow consulting and AI tooling for Bay Area civil and construction firms.</span>
           </div>
           <div class="tl-row">
             <span class="tl-year">Now</span>
-            <span class="tl-what">RedlineIQ live. Building tools at the intersection of civil engineering and software.</span>
+            <span class="tl-what">RedlineIQ live. Building AI tools for plan review, proposals, and field workflows.</span>
           </div>
         </div>
       </div>
