@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>LinkedIn banner — Nick Furr</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    /* dark metal — mirrors #metal-overrides in index.html */
+    --bg:      #101316;
+    --ink:     #e9ecef;
+    --muted:   #838a90;
+    --line:    #262b30;
+    --rule:    #3a4147;
+    --accent:  #9b7cff;
+
+    --f-serif: 'Source Serif 4', Georgia, serif;
+    --f-mono:  'JetBrains Mono', ui-monospace, monospace;
+
+    /* LinkedIn overlays the avatar across the lower-left; keep content clear of it */
+    --safe-left: 400px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body { width: 1584px; height: 396px; overflow: hidden; background: var(--bg); }
+
+  .banner {
+    width: 1584px;
+    height: 396px;
+    background: var(--bg);
+    color: var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* 60px survey grid — same texture as the OG card */
+  .banner::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, var(--line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+    background-size: 60px 60px;
+    background-position: 60px 60px;
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  .corner {
+    position: absolute;
+    width: 24px; height: 24px;
+    border: 1px solid var(--accent);
+    z-index: 2;
+  }
+  /* no bottom-left corner — the profile avatar sits there */
+  .corner.tl { top: 18px; left: 18px; border-right: none; border-bottom: none; }
+  .corner.tr { top: 18px; right: 18px; border-left: none; border-bottom: none; }
+  .corner.br { bottom: 18px; right: 18px; border-left: none; border-top: none; }
+
+  .frame {
+    position: absolute;
+    inset: 32px 32px auto 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    z-index: 2;
+  }
+
+  .mark {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  /* Benchmark mark — USGS-style monument glyph, same motif as the site eyebrows */
+  .mark::before {
+    content: '';
+    width: 13px; height: 13px;
+    background-color: var(--accent);
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 3 L22 20 L2 20 Z' fill='none' stroke='black' stroke-width='1.8' stroke-linejoin='round'/><circle cx='12' cy='14.5' r='1.8' fill='black'/></svg>");
+            mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 3 L22 20 L2 20 Z' fill='none' stroke='black' stroke-width='1.8' stroke-linejoin='round'/><circle cx='12' cy='14.5' r='1.8' fill='black'/></svg>");
+    -webkit-mask-size: contain;  mask-size: contain;
+    -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+    flex-shrink: 0;
+  }
+
+  /* the station datum the benchmark glyph implies — Burlingame, CA */
+  .station {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: right;
+    line-height: 1.7;
+  }
+
+  .content {
+    position: absolute;
+    inset: 0;
+    padding-left: var(--safe-left);
+    padding-right: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  .lede {
+    font-family: var(--f-serif);
+    font-weight: 300;
+    font-size: 62px;
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  /* chrome on display italics only — the signature */
+  .lede em {
+    font-style: italic;
+    font-weight: 400;
+    background: linear-gradient(100deg,#6e7479 0%,#c5cbd0 14%,#ffffff 27%,#a7adb3 41%,#7c8288 53%,#eef1f4 69%,#b4babf 83%,#878d93 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+
+  .lede-rule {
+    margin-top: 22px;
+    width: 140px;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .url {
+    position: absolute;
+    right: 32px; bottom: 32px;
+    font-family: var(--f-mono);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    z-index: 2;
+  }
+  .url .accent { color: var(--accent); }
+</style>
+</head>
+<body>
+  <div class="banner">
+    <span class="corner tl"></span>
+    <span class="corner tr"></span>
+    <span class="corner br"></span>
+
+    <div class="frame">
+      <div class="mark">N. Furr</div>
+      <div class="station">
+        <div>37.5779&deg; N</div>
+        <div>122.3480&deg; W</div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="lede">Infrastructure. <em>Software builder.</em> Bay Area.</div>
+      <div class="lede-rule"></div>
+    </div>
+
+    <span class="url"><span class="accent">&rarr;</span>&nbsp;&nbsp;NICKFURR.COM</span>
+  </div>
+</body>
+</html>
