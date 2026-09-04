@@ -243,6 +243,8 @@
     margin-bottom: 56px;
     align-items: baseline;
   }
+  /* heading block belongs beside the index, not under it in the 220px column */
+  .section-head > div { grid-column: 2; }
   /* Engineering-drawing numerals — used ONLY on section indices.
      Restrained typographic signal of "plan set" without theme-park. */
   .section-num {
@@ -904,6 +906,7 @@
     #hero { padding: 80px 0 64px; }
     .hero-meta { grid-template-columns: 1fr; gap: 24px; }
     .section-head { grid-template-columns: 1fr; gap: 12px; margin-bottom: 40px; }
+    .section-head > div { grid-column: 1; }
     .work-item { grid-template-columns: 1fr; gap: 16px; padding: 32px 0; }
     .work-detail { grid-template-columns: 1fr; gap: 20px; }
     .work-feature .feature-header { grid-template-columns: 1fr; gap: 16px; }
@@ -986,12 +989,12 @@ footer a:hover{color:#e9ecef;}
       <h1 class="hero-lede">
         Civil design. <em>Software builder.</em> Bay Area.
       </h1>
-      <p class="hero-sub">I design civil infrastructure and build software for AEC — tools for the problems I run into on jobsites and in CAD.</p>
+      <p class="hero-sub">I design civil infrastructure and build software for AEC — so the tools I ship are ones I need myself.</p>
 
       <div class="hero-meta">
         <div class="meta-block">
           <span class="eyebrow">Background</span>
-          <p style="margin-top:10px">4+ years on jobsites and in CAD — Nibbi Bros, Westland Group, BKF Engineers — before I shipped my first production app. Now I build the tools I wish I'd had.</p>
+          <p style="margin-top:10px">In AEC since 2016 — Nibbi Bros, Westland Group, BKF Engineers. Civil design first; the software grew out of it.</p>
         </div>
         <div class="meta-block">
           <span class="eyebrow">Currently</span>
@@ -1246,7 +1249,7 @@ footer a:hover{color:#e9ecef;}
       <span class="section-num">02<span class="slash">/</span><span class="total">03</span></span>
       <span class="eyebrow">About</span>
       <div>
-        <h2>4+ years in infrastructure. Five in software. Same discipline.</h2>
+        <h2>Engineering, then software. Same discipline.</h2>
       </div>
     </div>
 
