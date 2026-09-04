@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LinkedIn banner v2 — alignment sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden;background:#0b0d11}
+a{color:#9b7cff}a:hover{color:#b9a3ff}
+.stage{position:absolute;top:0;left:0;width:1584px;height:396px;transform-origin:top left;background:#0b0d11;overflow:hidden;font-family:'JetBrains Mono',ui-monospace,monospace}
+.stage::before{content:'';position:absolute;inset:0;background:radial-gradient(620px 340px at 84% 22%,rgba(155,124,255,.20),transparent 66%),radial-gradient(420px 300px at 6% 96%,rgba(155,124,255,.07),transparent 68%);pointer-events:none}
+svg{position:absolute;inset:0;width:1584px;height:396px}
+.tl{position:absolute;top:40px;left:64px;font-size:13px;letter-spacing:.34em;color:#aeb5bc;text-transform:uppercase;display:flex;align-items:center;gap:12px;z-index:3}
+.tl .mk{width:10px;height:10px;background:#9b7cff;transform:rotate(45deg);box-shadow:0 0 10px rgba(155,124,255,.7)}
+.url{position:absolute;bottom:44px;right:64px;font-size:13px;letter-spacing:.26em;color:#c3c9cf;text-transform:uppercase;display:flex;align-items:center;gap:14px;z-index:3}
+.url .d{width:7px;height:7px;border-radius:50%;background:#9b7cff;box-shadow:0 0 10px #9b7cff}
+.vig{position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,13,17,.92) 0%,rgba(11,13,17,0) 22%,rgba(11,13,17,0) 78%,rgba(11,13,17,.55) 100%);pointer-events:none;z-index:2}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+<svg id="art" viewBox="0 0 1584 396" fill="none">
+<defs>
+<filter id="vglow" x="-20%" y="-200%" width="140%" height="500%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<linearGradient id="fade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".15"/><stop offset=".45" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity=".35"/></linearGradient>
+<mask id="fademask"><rect width="1584" height="396" fill="url(#fade)"/></mask>
+<linearGradient id="corridor" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9b7cff" stop-opacity="0"/><stop offset=".55" stop-color="#9b7cff" stop-opacity=".16"/><stop offset="1" stop-color="#9b7cff" stop-opacity=".04"/></linearGradient>
+</defs>
+<g id="terrain" mask="url(#fademask)"></g>
+<g id="tech" mask="url(#fademask)"></g>
+<g id="corridorband"></g>
+<g id="row" mask="url(#fademask)"></g>
+<g id="pave" mask="url(#fademask)"></g>
+<g id="ticks"></g>
+<g id="center"></g>
+<g id="labels"></g>
+</svg>
+<div class="vig"></div>
+<div class="tl"><span class="mk"></span> N. Furr</div>
+<div class="url"><span class="d"></span> nickfurr.com</div>
+</div>
+<script>
+const V = new URLSearchParams(location.search).get('v') || 'd2s';
+const P = "M -80 306 C 220 306 390 302 600 276 C 800 251 940 194 1200 175 C 1380 162 1520 158 1680 155";
+const NS = "http://www.w3.org/2000/svg";
+const el = (n,a)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e};
+const off = (dy,a)=>el('path',Object.assign({d:P,transform:`translate(0 ${dy})`,fill:'none'},a));
+
+// terrain contours — consistent interval, heavier index contour
+const terrain = document.getElementById('terrain');
+[-226,-196,-166,-136,-106,106,136,166,196,226,256].forEach(dy=>{
+  const index = Math.abs(dy)===166;
+  terrain.appendChild(off(dy*1.02,{stroke:'#8e979f','stroke-width':index?1.1:.8,'stroke-opacity':index?.40:.22}));
+});
+[-88,-76,76,88].forEach(dy=>terrain.appendChild(off(dy,{stroke:'#8e979f','stroke-width':.8,'stroke-opacity':.17})));
+
+// right-of-way / property lines (long-short dash)
+const row = document.getElementById('row');
+[-58,58].forEach(dy=>row.appendChild(off(dy,{stroke:'#79828a','stroke-width':.9,'stroke-opacity':.34,'stroke-dasharray':'26 7 4 7'})));
+
+// pavement edges + shoulder
+const pave = document.getElementById('pave');
+[-27,27].forEach(dy=>pave.appendChild(off(dy,{stroke:'#d3d9de','stroke-width':2,'stroke-opacity':.72})));
+[-36,36].forEach(dy=>pave.appendChild(off(dy,{stroke:'#aab2b9','stroke-width':.9,'stroke-opacity':.30,'stroke-dasharray':'12 9'})));
+
+// corridor wash (variant b)
+if(V==='b'){
+  document.getElementById('corridorband').appendChild(el('path',{d:P,fill:'none',stroke:'url(#corridor)','stroke-width':54}));
+}
+
+// centerline — the designed line, violet
+const center = document.getElementById('center');
+center.appendChild(el('path',{d:P,fill:'none',stroke:'#9b7cff','stroke-width':V==='b'?2.4:2,'stroke-opacity':V==='b'?.95:.9,'stroke-dasharray':'34 10 3 10',filter:'url(#vglow)'}));
+
+// station ticks + labels along the alignment
+const meas = el('path',{d:P}); document.getElementById('art').appendChild(meas);
+const L = meas.getTotalLength(); meas.remove();
+const ticks = document.getElementById('ticks'), labels = document.getElementById('labels');
+let sta = 0;
+for(let s=170; s<L-40; s+=132){
+  const p = meas.getPointAtLength ? null : null;
+  const m = el('path',{d:P}); document.getElementById('art').appendChild(m);
+  const a = m.getPointAtLength(s), b = m.getPointAtLength(Math.min(s+1,L)); m.remove();
+  const dx=b.x-a.x, dy=b.y-a.y, len=Math.hypot(dx,dy)||1;
+  const nx=-dy/len, ny=dx/len;
+  const STRONG = V==='d2s';
+  const major = sta%2===0;
+  const h = major?11:6;
+  ticks.appendChild(el('line',{x1:a.x+nx*27,y1:a.y+ny*27,x2:a.x+nx*(27+h),y2:a.y+ny*(27+h),stroke:major?'#c9d0d6':'#8a9299','stroke-width':major?(STRONG?1.4:1.1):.8,'stroke-opacity':major?(STRONG?.85:.55):(STRONG?.5:.32)}));
+  if(major && a.x>40 && a.x<1450){
+    const t = el('text',{x:a.x+nx*(27+h+13),y:a.y+ny*(27+h+(STRONG?15:13)),fill:STRONG?'#b9a3ff':'#7f878e','font-size':STRONG?'9.5':'8.5','font-family':"'JetBrains Mono',monospace",'letter-spacing':'.12em','text-anchor':'middle','fill-opacity':STRONG?.92:.62});
+    t.textContent = `${10+sta*5}+00`;
+    labels.appendChild(t);
+  }
+  sta++;
+}
+// north arrow / curve markers removed
+
+// ---- tech layer: c=triangulation net, d=point cloud, e=coordinate readout ----
+const tech = document.getElementById('tech');
+function rng(seed){let s=seed;return()=>{s=(s*1664525+1013904223)%4294967296;return s/4294967296}}
+const MEAS = el('path',{d:P}); document.getElementById('art').appendChild(MEAS); MEAS.style.display='none';
+function ptAt(f){return MEAS.getPointAtLength(L*Math.max(0,Math.min(1,f)))}
+
+if(V==='c'){
+  // Delaunay TIN (Bowyer-Watson) — real surface mesh, no crossing edges
+  const r=rng(11), pts=[];
+  const COLS=13, ROWS=5;
+  for(let i=0;i<=COLS;i++)for(let j=0;j<=ROWS;j++){
+    pts.push({x:-70+(1724/COLS)*i+(r()-.5)*76, y:-40+(476/ROWS)*j+(r()-.5)*62});
+  }
+  for(let i=0;i<14;i++){const a=ptAt((i+.5)/14);pts.push({x:a.x+(r()-.5)*30,y:a.y+(r()-.5)*30});}
+  pts.forEach((p,i)=>p.id=i);
+
+  const S=[{x:-9000,y:-5000,id:-1},{x:9000,y:-5000,id:-2},{x:0,y:9000,id:-3}];
+  let tris=[[S[0],S[1],S[2]]];
+  const inCirc=(p,a,b,c)=>{
+    const ax=a.x-p.x,ay=a.y-p.y,bx=b.x-p.x,by=b.y-p.y,cx=c.x-p.x,cy=c.y-p.y;
+    const d=(ax*ax+ay*ay)*(bx*cy-by*cx)-(bx*bx+by*by)*(ax*cy-ay*cx)+(cx*cx+cy*cy)*(ax*by-ay*bx);
+    const area=(b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x);
+    return area>0?d>0:d<0;
+  };
+  pts.forEach(p=>{
+    const bad=[],good=[];
+    tris.forEach(t=>(inCirc(p,t[0],t[1],t[2])?bad:good).push(t));
+    const cnt={};
+    bad.forEach(t=>[[t[0],t[1]],[t[1],t[2]],[t[2],t[0]]].forEach(e=>{
+      const k=[e[0].id,e[1].id].sort((a,b)=>a-b).join('_');
+      cnt[k]=cnt[k]?{n:cnt[k].n+1,e:cnt[k].e}:{n:1,e:e};
+    }));
+    tris=good;
+    Object.values(cnt).forEach(v=>{if(v.n===1)tris.push([v.e[0],v.e[1],p])});
+  });
+  tris=tris.filter(t=>t.every(v=>v.id>=0));
+
+  // distance from alignment -> brightness
+  const samples=[];for(let i=0;i<=90;i++)samples.push(ptAt(i/90));
+  const distA=p=>{let m=1e9;samples.forEach(s=>{const d=Math.hypot(s.x-p.x,s.y-p.y);if(d<m)m=d});return m};
+  const seen={};
+  tris.forEach(t=>[[t[0],t[1]],[t[1],t[2]],[t[2],t[0]]].forEach(e=>{
+    const k=[e[0].id,e[1].id].sort((a,b)=>a-b).join('_');
+    if(seen[k])return; seen[k]=1;
+    const mid={x:(e[0].x+e[1].x)/2,y:(e[0].y+e[1].y)/2};
+    const d=distA(mid), near=Math.max(0,1-d/195);
+    tech.appendChild(el('line',{x1:e[0].x,y1:e[0].y,x2:e[1].x,y2:e[1].y,stroke:near>.45?'#9b7cff':'#7e878f','stroke-width':.7,'stroke-opacity':(.06+near*.46).toFixed(3)}));
+  }));
+  pts.forEach(p=>{const near=Math.max(0,1-distA(p)/150);if(near>.35)tech.appendChild(el('circle',{cx:p.x,cy:p.y,r:1.1,fill:'#c4b0ff','fill-opacity':(near*.6).toFixed(3)}))});
+}
+
+if(V[0]==='d'){
+  // structured scan — perpendicular passes, batched into few paths for perf
+  const r=rng(23);
+  const buckets=[[],[],[],[]];
+  // d1 sweep: density ramps up toward the right (scan in progress)
+  // d2 rhythm: every 8th pass is a full-density plotted cross-section
+  // d3 wide: taller scan band, sparser — more atmospheric
+  const RHYTHM = V==='d2'||V==='d2o'||V==='d2s';
+  const SWEEP = V==='d1', WIDE = V==='d3', OCC = V==='d2o'||V==='d2s';
+  const HALF = WIDE?200:150, STEPO = WIDE?8:7, PASSES = WIDE?170:190;
+  let pass=0;
+  for(let f=0; f<=1; f+=1/PASSES, pass++){
+    const a=ptAt(f), b=ptAt(Math.min(1,f+.002));
+    const dx=b.x-a.x, dy=b.y-a.y, len=Math.hypot(dx,dy)||1;
+    const nx=-dy/len, ny=dx/len;
+    const section = RHYTHM && pass%8===0;
+    let drop = WIDE?.42:.3;
+    if(SWEEP) drop = .62 - f*.45;
+    if(section) drop = .04;
+    // occlusion shadow: scanner loses line of sight behind an obstruction
+    let occHalf = 0;
+    if(OCC){
+      const d1=Math.abs(f-.40), d2=Math.abs(f-.735);
+      if(d1<.052) occHalf = (1-d1/.052)*118;
+      else if(d2<.030) occHalf = (1-d2/.030)*74;
+    }
+    for(let o=-HALF;o<=HALF;o+=STEPO){
+      if(r()<drop) continue;
+      if(occHalf && o>18-occHalf && o<18+occHalf && r()<.93) continue;
+      const jit=(r()-.5)*5.5;
+      const x=a.x+nx*(o+jit)+(r()-.5)*4.5, y=a.y+ny*(o+jit)+(r()-.5)*4.5;
+      const ao=Math.abs(o), near=Math.max(0,1-ao/HALF);
+      let bi = ao<30 ? 3 : near>.62 ? 2 : near>.32 ? 1 : 0;
+      if(section && bi<2) bi=Math.min(2,bi+1);
+      buckets[bi].push(`M${x.toFixed(1)} ${y.toFixed(1)}h.1`);
+    }
+  }
+  const cfg=[['#79838c',.26,1.5],['#98a2ab',.38,1.7],['#c3cad2',.58,1.9],['#d9cfff',.85,2.2]];
+  buckets.forEach((b,i)=>{
+    if(!b.length)return;
+    tech.appendChild(el('path',{d:b.join(''),stroke:cfg[i][0],'stroke-opacity':cfg[i][1],'stroke-width':cfg[i][2],'stroke-linecap':'round',fill:'none'}));
+  });
+}
+
+if(V==='e'){
+  const r=rng(31);
+  for(let i=0;i<26;i++){
+    const f=(i+.5)/26, a=ptAt(f);
+    const side=(i%2===0?-1:1), dy=side*(74+r()*104);
+    const N=(2038000+Math.round(r()*9000)).toLocaleString('en-US');
+    const E=(6512000+Math.round(r()*9000)).toLocaleString('en-US');
+    const t=el('text',{x:a.x+(r()-.5)*40,y:a.y+dy,fill:i%3===0?'#9b7cff':'#8e979f','font-size':'8','font-family':"'JetBrains Mono',monospace",'letter-spacing':'.1em','text-anchor':'middle','fill-opacity':i%3===0?.34:.20});
+    t.textContent=`N ${N}  E ${E}`;
+    tech.appendChild(t);
+  }
+}
+
+const RAW = new URLSearchParams(location.search).get('raw');
+function fit(){if(RAW){document.getElementById('stage').style.transform='none';document.body.style.height='396px';document.documentElement.style.height='396px';return true}const w=window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth||0;if(!w)return false;const s=document.getElementById('stage'),k=w/1584;s.style.transform='scale('+k+')';document.body.style.height=(396*k)+'px';document.documentElement.style.height=(396*k)+'px';return true}
+if(!fit()){let n=0;const t=setInterval(()=>{if(fit()||++n>60)clearInterval(t)},40)}
+addEventListener('resize',fit);addEventListener('load',fit);requestAnimationFrame(fit);
+if(window.ResizeObserver)new ResizeObserver(fit).observe(document.body);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+</script>
+</body>
+</html>

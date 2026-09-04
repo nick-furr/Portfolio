@@ -4,12 +4,12 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="theme-color" content="#101316"/>
-<title>Nick Furr — Civil design. Software builder. Bay Area.</title>
-<meta name="description" content="I design civil infrastructure and build software for AEC. Production AI tools for construction and civil work — plan review, proposal editing, grounded RAG, and MCP tooling."/>
+<title>Nick Furr — Civil engineer. Software builder. Bay Area.</title>
+<meta name="description" content="Civil engineer turned software builder. Portfolio of full-stack and automation tools for construction and civil work — RedlineIQ, Akane, and more."/>
 <link rel="canonical" href="https://nickfurr.com"/>
 
-<meta property="og:title" content="Nick Furr — Civil design. Software builder. Bay Area."/>
-<meta property="og:description" content="I design civil infrastructure and build software for AEC. Portfolio of full-stack and automation tools for architecture, engineering, and construction."/>
+<meta property="og:title" content="Nick Furr — Civil engineer. Software builder. Bay Area."/>
+<meta property="og:description" content="Civil engineer turned software builder. Portfolio of full-stack and automation tools for construction and civil work."/>
 <meta property="og:url" content="https://nickfurr.com"/>
 <meta property="og:site_name" content="Nick Furr"/>
 <meta property="og:image" content="https://nickfurr.com/og-image.png"/>
@@ -17,8 +17,8 @@
 <meta property="og:image:height" content="630"/>
 <meta property="og:type" content="website"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Nick Furr — Civil design. Software builder. Bay Area."/>
-<meta name="twitter:description" content="I design civil infrastructure and build software for AEC. Portfolio of full-stack and automation tools for architecture, engineering, and construction."/>
+<meta name="twitter:title" content="Nick Furr — Civil engineer. Software builder. Bay Area."/>
+<meta name="twitter:description" content="Civil engineer turned software builder. Portfolio of full-stack and automation tools for construction and civil work."/>
 <meta name="twitter:image" content="https://nickfurr.com/og-image.png"/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
@@ -159,7 +159,7 @@
     font-family: var(--f-serif);
     font-weight: 300;
     font-size: clamp(44px, 6.4vw, 88px);
-    line-height: 1.13;   /* clears line-1 descenders over line-2 ascenders */
+    line-height: 1.04;
     letter-spacing: -0.025em;
     color: var(--ink);
     max-width: 22ch;
@@ -168,7 +168,6 @@
     font-style: italic;
     color: var(--accent);
     font-weight: 400;
-    white-space: nowrap;   /* never split the display phrase across lines */
   }
   .hero-sub {
     margin-top: 28px;
@@ -177,8 +176,7 @@
     font-size: clamp(18px, 1.6vw, 22px);
     line-height: 1.5;
     color: var(--ink-2);
-    max-width: 60ch;
-    text-wrap: balance;   /* no orphaned "AEC." when it does wrap */
+    max-width: 48ch;
   }
   .hero-meta {
     display: grid;
@@ -186,8 +184,7 @@
     gap: 48px;
     align-items: start;
     padding-top: 32px;
-    /* violet, not grey — the backdrop's pavement edges are grey and swallow a neutral rule */
-    border-top: 1px solid rgba(155,124,255,.34);
+    border-top: 1px solid var(--line);
   }
   .hero-meta .meta-block { max-width: 38ch; }
   .hero-meta p {
@@ -245,8 +242,6 @@
     margin-bottom: 56px;
     align-items: baseline;
   }
-  /* heading block belongs beside the index, not under it in the 220px column */
-  .section-head > div { grid-column: 2; }
   /* Engineering-drawing numerals — used ONLY on section indices.
      Restrained typographic signal of "plan set" without theme-park. */
   .section-num {
@@ -416,45 +411,49 @@
   }
   .work-secondary-label .rule { flex: 1; height: 1px; background: var(--line); }
 
-  /* Pinned GitHub repos — minimalist grid */
-  .repo-grid {
+  /* Compact tile — Akane */
+  .work-compact {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    border-bottom: 1px solid var(--line);
+    grid-template-columns: 360px 1fr;
+    gap: 40px;
+    padding: 32px 0 16px;
+    align-items: start;
   }
-  .repo {
-    padding: 28px 32px 28px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  .work-compact .compact-shot {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
   }
-  .repo + .repo {
-    padding-left: 32px;
-    border-left: 1px solid var(--line);
+  .work-compact .compact-shot img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top center;
   }
-  .repo .repo-lang {
-    font-family: var(--f-mono);
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .repo h3 {
+  .work-compact h3 {
     font-family: var(--f-serif);
-    font-size: 22px;
+    font-size: 26px;
     font-weight: 400;
     color: var(--ink);
     line-height: 1.15;
     letter-spacing: -0.01em;
   }
-  .repo p {
-    font-size: 14.5px;
+  .work-compact .compact-meta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+  }
+  .work-compact .compact-meta .status { color: var(--accent); }
+  .work-compact .tagline {
+    font-size: 15px;
     color: var(--ink-2);
     line-height: 1.6;
-    flex: 1;
-  }
-  .repo-grid-foot {
-    margin-top: 24px;
+    margin-top: 8px;
+    max-width: 52ch;
   }
 
   .work-item {
@@ -700,6 +699,7 @@
     max-width: 60ch;
   }
   .about-prose p + p { margin-top: 18px; }
+  .about-prose em { color: var(--accent); font-style: italic; }
 
   .timeline {
     margin-top: 56px;
@@ -810,7 +810,6 @@
     color: #c5beac;
     line-height: 1.65;
     max-width: 40ch;
-    text-wrap: balance;   /* keeps "it." off a line of its own */
   }
   .booking-list {
     list-style: none;
@@ -909,16 +908,12 @@
     #hero { padding: 80px 0 64px; }
     .hero-meta { grid-template-columns: 1fr; gap: 24px; }
     .section-head { grid-template-columns: 1fr; gap: 12px; margin-bottom: 40px; }
-    .section-head > div { grid-column: 1; }
     .work-item { grid-template-columns: 1fr; gap: 16px; padding: 32px 0; }
     .work-detail { grid-template-columns: 1fr; gap: 20px; }
     .work-feature .feature-header { grid-template-columns: 1fr; gap: 16px; }
     .work-feature .feature-body { grid-template-columns: 1fr; gap: 16px; }
     .work-feature .feature-body > div:first-child { display: none; }
-    .repo-grid { grid-template-columns: 1fr; }
-    .repo { padding: 24px 0; border-bottom: 1px solid var(--line); }
-    .repo:last-child { border-bottom: none; }
-    .repo + .repo { padding-left: 0; border-left: none; }
+    .work-compact { grid-template-columns: 1fr; gap: 20px; padding: 24px 0; }
     .booking-card { padding: 24px; }
     .service-grid { grid-template-columns: 1fr; }
     .service:nth-child(odd) { padding-right: 0; border-right: none; }
@@ -956,7 +951,7 @@
   --pop:#9b7cff;--accent:#9b7cff;--accent-2:#b9a3ff;--accent-tint:#2a3138;
 }
 /* chrome on display italics only — the signature */
-.hero-lede em,.section-head h2 em,#contact h2 em{
+.hero-lede em,.section-head h2 em,.about-prose em,#contact h2 em{
   background:linear-gradient(100deg,#6e7479 0%,#c5cbd0 14%,#ffffff 27%,#a7adb3 41%,#7c8288 53%,#eef1f4 69%,#b4babf 83%,#878d93 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent; font-style:italic;
 }
 /* pop CTA chip with dark text */
@@ -972,10 +967,10 @@ footer{background:#0c0e11;color:#838a90;border-top-color:#262b30;}
 footer a:hover{color:#e9ecef;}
 /* alignment-sheet hero backdrop */
 #hero{position:relative;overflow:hidden;isolation:isolate}
-#hero-sheet{position:absolute;left:0;right:0;bottom:0;width:100%;height:100%;z-index:-1;opacity:.40;-webkit-mask-image:linear-gradient(100deg,transparent 0%,rgba(0,0,0,.35) 26%,#000 62%),linear-gradient(180deg,#000 30%,rgba(0,0,0,.45) 58%,transparent 88%);mask-image:linear-gradient(100deg,transparent 0%,rgba(0,0,0,.35) 26%,#000 62%),linear-gradient(180deg,#000 30%,rgba(0,0,0,.45) 58%,transparent 88%);-webkit-mask-composite:source-in;mask-composite:intersect}
+#hero-sheet{position:absolute;left:0;right:0;bottom:0;width:100%;height:100%;z-index:-1;opacity:.62;-webkit-mask-image:linear-gradient(100deg,transparent 0%,rgba(0,0,0,.35) 26%,#000 62%),linear-gradient(180deg,#000 62%,transparent 100%);mask-image:linear-gradient(100deg,transparent 0%,rgba(0,0,0,.35) 26%,#000 62%),linear-gradient(180deg,#000 62%,transparent 100%);-webkit-mask-composite:source-in;mask-composite:intersect}
 #hero-sheet::after{content:'';position:absolute;inset:0;background:radial-gradient(680px 380px at 88% 30%,rgba(155,124,255,.16),transparent 64%)}
 #hero .wrap{position:relative;z-index:1}
-@media (max-width:900px){#hero-sheet{opacity:.26}}
+@media (max-width:900px){#hero-sheet{opacity:.4}}
 </style>
 </head>
 <body>
@@ -993,22 +988,22 @@ footer a:hover{color:#e9ecef;}
 
 <!-- ─────────── Hero ─────────── -->
 <section id="hero">
-  <div id="hero-sheet" aria-hidden="true"></div>
+  <div id="hero-sheet"></div>
   <div class="wrap">
     <div class="hero-grid">
       <h1 class="hero-lede">
-        Civil design. <em>Software builder.</em> Bay Area.
+        Civil engineer. <em>Software builder.</em> Bay Area.
       </h1>
-      <p class="hero-sub">I design civil infrastructure and build software for AEC.</p>
+      <p class="hero-sub">Civil engineer turned software builder. I make tools for the problems I ran into firsthand — on jobsites, in CAD, and in the field.</p>
 
       <div class="hero-meta">
         <div class="meta-block">
           <span class="eyebrow">Background</span>
-          <p style="margin-top:10px">In AEC since 2016 — Nibbi Bros, Westland Group, BKF Engineers, now Qualus.</p>
+          <p style="margin-top:10px">4+ years on jobsites and in CAD — Nibbi Bros, Westland Group, BKF Engineers — before I shipped my first production app. Now I build the tools I wish I'd had.</p>
         </div>
         <div class="meta-block">
           <span class="eyebrow">Currently</span>
-          <p style="margin-top:10px">Building software for architecture, engineering, surveying, and construction. RedlineIQ is live; more on GitHub.</p>
+          <p style="margin-top:10px">Building tools at the intersection of civil engineering and software. RedlineIQ is live; more in the works.</p>
           <div class="hero-actions">
             <a href="#contact" class="btn">Get in touch <span class="arrow">→</span></a>
             <a href="#work" class="text-link">See work <span class="arrow">↗</span></a>
@@ -1026,8 +1021,8 @@ footer a:hover{color:#e9ecef;}
       <span class="section-num">01<span class="slash">/</span><span class="total">03</span></span>
       <span class="eyebrow">Selected work</span>
       <div>
-        <h2>Production AI tools for engineering work.</h2>
-        <p class="lede">All built from problems I run into on jobsites, in CAD, and in agency review.</p>
+        <h2>A live tool, and a restaurant in flight.</h2>
+        <p class="lede">Both solve problems I ran into firsthand.</p>
       </div>
     </div>
 
@@ -1070,12 +1065,12 @@ footer a:hover{color:#e9ecef;}
             </div>
             <div class="detail-block">
               <div class="label">Approach</div>
-              <p>A source-type router parses digital PDFs losslessly and falls back to a vision model for scanned sheets. An eval harness with labeled golden sets and a versioned prompt registry keeps accuracy honest.</p>
+              <p>Claude Vision parses the markup; a Node service classifies items, links them to sheet numbers, and produces a punch list a drafter can work from.</p>
             </div>
           </div>
 
           <div class="work-stack">
-            <span>React</span><span>Node</span><span>Express</span><span>Vision + text LLM</span><span>SQLite</span><span>Langfuse</span><span>Sentry</span>
+            <span>React</span><span>Node</span><span>Express</span><span>Claude Vision</span><span>SQLite</span><span>Docker</span>
           </div>
 
           <div class="work-actions">
@@ -1088,34 +1083,32 @@ footer a:hover{color:#e9ecef;}
 
     <!-- Secondary divider -->
     <div class="work-secondary-label">
-      <span class="label">W—02 · Pinned on GitHub</span>
+      <span class="label">W—02 · Also in flight</span>
       <span class="rule"></span>
     </div>
 
-    <!-- Pinned repos -->
-    <div class="repo-grid">
-      <article class="repo">
-        <span class="repo-lang">TypeScript</span>
-        <h3>Proposal Editor</h3>
-        <p>AI editing for designed AEC proposal PDFs — describe a change in plain language, review a word-level diff, export to Word with native tracked changes.</p>
-        <a href="https://github.com/nick-furr/proposal-editor" target="_blank" rel="noopener" class="text-link">Source <span class="arrow">↗</span></a>
-      </article>
-      <article class="repo">
-        <span class="repo-lang">Python</span>
-        <h3>Benefits Rep Copilot</h3>
-        <p>Grounded RAG QA for benefits plan documents — client-filtered retrieval, verified citations, and a CI-gated eval that holds refusal accuracy as a hard floor.</p>
-        <a href="https://github.com/nick-furr/benefits-rep-copilot" target="_blank" rel="noopener" class="text-link">Source <span class="arrow">↗</span></a>
-      </article>
-      <article class="repo">
-        <span class="repo-lang">JavaScript</span>
-        <h3>Leads Toolkit</h3>
-        <p>Two MCP servers — Google Places search and opportunity scoring — that turn hours of per-firm prospect research into one Claude agent workflow.</p>
-        <a href="https://github.com/nick-furr/leads-toolkit" target="_blank" rel="noopener" class="text-link">Source <span class="arrow">↗</span></a>
-      </article>
-    </div>
-    <div class="repo-grid-foot">
-      <a href="https://github.com/nick-furr" target="_blank" rel="noopener" class="text-link">All repositories on GitHub <span class="arrow">↗</span></a>
-    </div>
+    <!-- Compact: Akane -->
+    <article class="work-compact">
+      <div class="compact-shot">
+        <img src="akane-screenshot.png" alt="Akane — counter-first sushi restaurant with live booking"/>
+      </div>
+      <div>
+        <div class="compact-meta">
+          <span>2026</span>
+          <span>Full-stack · reservations</span>
+          <span class="status">In progress</span>
+        </div>
+        <h3>Akane</h3>
+        <p class="tagline">Counter-first sushi restaurant with a live reservation system, email confirmations, and a protected owner dashboard. Next: an AI layer for conversational booking and natural-language owner queries — <em>"how many covers last Saturday?"</em></p>
+        <div class="work-stack">
+          <span>Next.js</span><span>TypeScript</span><span>Supabase</span><span>Resend</span><span>Vercel</span>
+        </div>
+        <div class="work-actions">
+          <a href="https://akane.nickfurr.com/" target="_blank" rel="noopener" class="btn btn-ghost">Live demo <span class="arrow">→</span></a>
+          <a href="https://github.com/nick-furr/akane" target="_blank" rel="noopener" class="text-link">Source <span class="arrow">↗</span></a>
+        </div>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -1259,7 +1252,7 @@ footer a:hover{color:#e9ecef;}
       <span class="section-num">02<span class="slash">/</span><span class="total">03</span></span>
       <span class="eyebrow">About</span>
       <div>
-        <h2>A civil engineer who ships software.</h2>
+        <h2>4+ years in infrastructure. Five in software. Same discipline.</h2>
       </div>
     </div>
 
@@ -1274,37 +1267,34 @@ footer a:hover{color:#e9ecef;}
       <div>
         <div class="about-prose">
           <p>I built physical infrastructure before I built digital. At <strong>Nibbi Bros</strong> I ran takeoffs, subcontractor coordination, and field problem-solving on the SFO Long-Term Parking Garage and an LIHTC housing project in San Francisco.</p>
-          <p>At <strong>Westland Group</strong> I automated SoCal Gas as-builts in VBA — my first production code. Two years at <strong>BKF Engineers</strong> as Civil 3D Designer on Treasure Island, Adrian Court in Burlingame, and 2201 Valley St in Oakland. Since 2021 I've built software for the industry full time. Today I do civil design at <strong>Qualus</strong>, and build software independently.</p>
+          <p>At <strong>Westland Group</strong> I kept automating Excel in VBA until the shop realized I should be writing software. Two years at <strong>BKF Engineers</strong> as Lead Civil 3D Designer on Treasure Island, Adrian Court in Burlingame, and 2201 Valley St in Oakland.</p>
+          <p>Then I went heads-down on code through 100Devs. The tools changed. The discipline — <em>check your work, document every decision, the spec is gospel</em> — didn't.</p>
         </div>
 
         <div class="timeline">
           <div class="tl-row">
-            <span class="tl-year">2016</span>
-            <span class="tl-what"><strong>Nibbi Bros</strong> — Project Engineer, summers 2016 &amp; 2017. SFO garage, LIHTC housing.</span>
+            <span class="tl-year">2015</span>
+            <span class="tl-what"><strong>Cal Poly Pomona</strong> — B.S. Civil Engineering</span>
           </div>
           <div class="tl-row">
             <span class="tl-year">2018</span>
+            <span class="tl-what"><strong>Nibbi Bros</strong> — Project Engineer. SFO garage, LIHTC housing.</span>
+          </div>
+          <div class="tl-row">
+            <span class="tl-year">2019</span>
             <span class="tl-what"><strong>Westland Group</strong> — SoCal Gas as-builts. First production VBA.</span>
           </div>
           <div class="tl-row">
-            <span class="tl-year">2019</span>
-            <span class="tl-what"><strong>Cal Poly Pomona</strong> — B.S. Civil Engineering. EIT.</span>
-          </div>
-          <div class="tl-row">
-            <span class="tl-year">2019</span>
-            <span class="tl-what"><strong>BKF Engineers</strong> — Design Engineer, Civil 3D designer through 2021.</span>
+            <span class="tl-year">2020</span>
+            <span class="tl-what"><strong>BKF Engineers</strong> — Lead Civil 3D Designer.</span>
           </div>
           <div class="tl-row">
             <span class="tl-year">2021&nbsp;→</span>
-            <span class="tl-what">Independent — full-stack development. Software and workflow solutions for AEC.</span>
-          </div>
-          <div class="tl-row">
-            <span class="tl-year">2026&nbsp;→</span>
-            <span class="tl-what"><strong>Qualus</strong> — Civil Engineer II. Civil design and power systems.</span>
+            <span class="tl-what">Full-time pivot to software via <strong>100Devs</strong>. Five years building React, Node, and production apps.</span>
           </div>
           <div class="tl-row">
             <span class="tl-year">Now</span>
-            <span class="tl-what">RedlineIQ live. Building AI tools for plan review, proposals, and field workflows.</span>
+            <span class="tl-what">RedlineIQ live. Building tools at the intersection of civil engineering and software.</span>
           </div>
         </div>
       </div>
@@ -1320,7 +1310,7 @@ footer a:hover{color:#e9ecef;}
         <span class="section-num">03<span class="slash">/</span><span class="total">03</span></span>
         <span class="eyebrow">Contact</span>
         <h2 style="margin-top:16px">Get in <em>touch</em>.</h2>
-        <p class="lede">Happy to talk about AEC, software, or what you're working on.</p>
+        <p class="lede">Happy to talk about what I've built, where I've worked, or what you're working on.</p>
 
         <div class="contact-details">
           <div class="contact-row">
@@ -1345,7 +1335,7 @@ footer a:hover{color:#e9ecef;}
       <div class="booking-card">
         <span class="eyebrow">Burlingame, CA · Bay Area</span>
         <h3>Let's talk.</h3>
-        <p class="booking-blurb">Tell me what you're working&nbsp;on. I'll show you how I'd build it.</p>
+        <p class="booking-blurb">Civil engineering background, software skills, and five years building tools for both.</p>
         <a href="mailto:me@nickfurr.com" class="booking-btn">Send an email <span class="arrow">→</span></a>
         <p class="booking-or">Also on <a href="https://www.linkedin.com/in/nicholas-furr/" target="_blank" rel="noopener">LinkedIn</a> — connect or message there too.</p>
       </div>
@@ -1367,6 +1357,5 @@ footer a:hover{color:#e9ecef;}
 
 <script src="alignment-sheet.js"></script>
 <script>renderAlignmentSheet(document.getElementById('hero-sheet'),{labels:false,preserve:'xMidYMax slice'});</script>
-
 </body>
 </html>
