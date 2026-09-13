@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="theme-color" content="#101316"/>
+<meta name="theme-color" content="#09090d"/>
 <title>Nick Furr — Civil design. Software builder. Bay Area.</title>
 <meta name="description" content="I design civil infrastructure and build software for AEC. Production AI tools for construction and civil work — plan review, proposal editing, grounded RAG, and MCP tooling."/>
 <link rel="canonical" href="https://nickfurr.com"/>
@@ -27,7 +27,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;1,8..60,400&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;1,8..60,400&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
   :root {
     /* warmer cream + deeper ink + more present rust */
@@ -90,16 +90,15 @@
     align-items: center;
     gap: 10px;
   }
-  /* Benchmark mark — USGS-style monument glyph, recurring section motif */
+  /* Outline diamond — the mark from the LinkedIn banner, recurring section motif */
   .eyebrow::before {
     content: '';
-    width: 13px; height: 13px;
-    background-color: currentColor;
-    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 3 L22 20 L2 20 Z' fill='none' stroke='black' stroke-width='1.8' stroke-linejoin='round'/><circle cx='12' cy='14.5' r='1.8' fill='black'/></svg>");
-            mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 3 L22 20 L2 20 Z' fill='none' stroke='black' stroke-width='1.8' stroke-linejoin='round'/><circle cx='12' cy='14.5' r='1.8' fill='black'/></svg>");
+    width: 11px; height: 11px;
+    background-color: var(--accent);
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2 L22 12 L12 22 L2 12 Z' fill='none' stroke='black' stroke-width='2'/></svg>");
+            mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2 L22 12 L12 22 L2 12 Z' fill='none' stroke='black' stroke-width='2'/></svg>");
     -webkit-mask-size: contain;  mask-size: contain;
     -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
-    opacity: 0.85;
     flex-shrink: 0;
   }
 
@@ -121,14 +120,8 @@
     align-items: center;
     justify-content: space-between;
   }
-  .brand {
-    font-family: var(--f-serif);
-    font-size: 18px;
-    font-weight: 500;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-  }
-  .brand .dot { color: var(--accent); }
+  .brand { font-weight: 500; transition: color 0.15s; }
+  .brand:hover { color: var(--ink); }
   .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
   .nav-links a {
     font-size: 14px;
@@ -166,9 +159,18 @@
   }
   .hero-lede em {
     font-style: italic;
-    color: var(--accent);
+    color: var(--ink-2);
     font-weight: 400;
     white-space: nowrap;   /* never split the display phrase across lines */
+  }
+  /* short violet rule under the headline, as on the banner */
+  .hero-lede::after {
+    content: '';
+    display: block;
+    width: 140px;
+    height: 1px;
+    margin-top: 28px;
+    background: linear-gradient(90deg, var(--accent), transparent);
   }
   .hero-sub {
     margin-top: 28px;
@@ -246,21 +248,15 @@
   }
   /* heading block belongs beside the index, not under it in the 220px column */
   .section-head > div { grid-column: 2; }
-  /* Engineering-drawing numerals — used ONLY on section indices.
-     Restrained typographic signal of "plan set" without theme-park. */
   .section-num {
-    font-family: 'Saira Condensed', 'Oswald', sans-serif;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    font-size: 52px;
-    line-height: 0.9;
-    letter-spacing: -0.02em;
-    color: var(--ink);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--muted);
     display: block;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
   }
-  .section-num .slash { color: var(--accent); margin: 0 2px; font-weight: 400; }
-  .section-num .total { color: var(--muted); font-size: 20px; vertical-align: super; }
+  .section-num .slash { color: var(--accent); margin: 0 4px; }
   .section-head h2 {
     font-family: var(--f-serif);
     font-weight: 400;
@@ -270,7 +266,7 @@
     color: var(--ink);
     max-width: 22ch;
   }
-  .section-head h2 em { font-style: italic; color: var(--accent); }
+  .section-head h2 em { font-style: italic; color: var(--ink-2); }
   .section-head .lede {
     font-size: 16px;
     color: var(--ink-2);
@@ -727,7 +723,7 @@
 
 
   /* ─────────── Contact ─────────── */
-  #contact { background: #1d1812; color: var(--bg); border-top: none; }
+  #contact { background: var(--bg-2); border-top: none; }
   #contact .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -740,21 +736,17 @@
     font-size: clamp(40px, 5vw, 64px);
     line-height: 1.05;
     letter-spacing: -0.02em;
-    color: var(--bg);
+    color: var(--ink);
     max-width: 14ch;
   }
-  #contact h2 em { color: var(--pop); font-style: italic; }
+  #contact h2 em { color: var(--ink-2); font-style: italic; }
   #contact .lede {
     font-size: 17px;
-    color: #c5beac;
+    color: var(--ink-2);
     margin-top: 24px;
     line-height: 1.65;
     max-width: 44ch;
   }
-  #contact .eyebrow { color: #c4b89e; }
-  #contact .section-num { color: #e8dec5; }
-  #contact .section-num .total { color: #948770; }
-  #contact .eyebrow::before { background: #908773; }
 
   .contact-details {
     margin-top: 32px;
@@ -767,73 +759,47 @@
     grid-template-columns: 100px 1fr;
     gap: 16px;
     padding: 12px 0;
-    border-bottom: 1px solid #2a2824;
+    border-bottom: 1px solid var(--line);
     align-items: baseline;
   }
   .contact-row .k {
     font-family: var(--f-mono);
     font-size: 11px;
     letter-spacing: 0.14em;
-    color: #908773;
+    color: var(--muted);
     text-transform: uppercase;
   }
   .contact-row .v {
     font-size: 15px;
-    color: var(--bg);
+    color: var(--ink);
   }
   .contact-row a.v { transition: color 0.15s; }
-  .contact-row a.v:hover { color: var(--pop); }
+  .contact-row a.v:hover { color: var(--accent); }
 
   /* booking card (replaces form) */
   .booking-card {
-    background: #1f1d1a;
-    border: 1px solid #2a2824;
+    background: var(--paper);
+    border: 1px solid var(--line-2);
     padding: 36px;
     display: flex;
     flex-direction: column;
     gap: 14px;
   }
-  .booking-card .eyebrow { color: #c4b89e; }
-  .booking-card .eyebrow::before { background: #908773; }
   .booking-card h3 {
     font-family: var(--f-serif);
     font-size: 32px;
     font-weight: 400;
     letter-spacing: -0.01em;
-    color: var(--bg);
+    color: var(--ink);
     line-height: 1.1;
     margin-top: 4px;
   }
   .booking-card .booking-blurb {
     font-size: 15px;
-    color: #c5beac;
+    color: var(--ink-2);
     line-height: 1.65;
     max-width: 40ch;
     text-wrap: balance;   /* keeps "it." off a line of its own */
-  }
-  .booking-list {
-    list-style: none;
-    padding: 0;
-    margin: 8px 0 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .booking-list li {
-    font-size: 14px;
-    color: #c5beac;
-    padding-left: 22px;
-    position: relative;
-    line-height: 1.5;
-  }
-  .booking-list li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 11px;
-    width: 12px;
-    height: 1px;
-    background: var(--pop);
   }
   .booking-btn {
     display: inline-flex;
@@ -843,9 +809,9 @@
     height: 52px;
     padding: 0 26px;
     margin-top: 8px;
-    background: var(--pop);
-    color: var(--ink);
-    border: 1px solid var(--pop);
+    background: var(--accent);
+    color: var(--bg);
+    border: 1px solid var(--accent);
     border-radius: 999px;
     font-family: var(--f-sans);
     font-size: 15px;
@@ -856,34 +822,34 @@
   }
   .booking-btn:hover {
     background: transparent;
-    color: var(--pop);
+    color: var(--accent);
   }
   .booking-btn .arrow { transition: transform 0.18s; }
   .booking-btn:hover .arrow { transform: translateX(3px); }
   .booking-or {
     font-size: 13px;
-    color: #908773;
+    color: var(--muted);
     margin-top: 10px;
-    border-top: 1px solid #2a2824;
+    border-top: 1px solid var(--line);
     padding-top: 16px;
   }
   .booking-or a {
-    color: #c5beac;
-    border-bottom: 1px solid #3a3833;
+    color: var(--ink-2);
+    border-bottom: 1px solid var(--line-2);
     padding-bottom: 1px;
     transition: color 0.15s, border-color 0.15s;
   }
   .booking-or a:hover {
-    color: var(--pop);
-    border-color: var(--pop);
+    color: var(--accent);
+    border-color: var(--accent);
   }
 
   /* ─────────── Footer ─────────── */
   footer {
     padding: 32px 0;
-    border-top: 1px solid #2a2824;
-    background: var(--ink);
-    color: #908773;
+    border-top: 1px solid var(--line);
+    background: var(--bg);
+    color: var(--muted);
   }
   footer .foot-inner {
     max-width: var(--max);
@@ -896,11 +862,21 @@
     flex-wrap: wrap;
     font-family: var(--f-mono);
     font-size: 12px;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.1em;
   }
   footer a { color: inherit; transition: color 0.15s; }
-  footer a:hover { color: var(--bg); }
+  footer a:hover { color: var(--ink); }
   footer .foot-links { display: flex; gap: 24px; }
+  /* site mark from the banner's corner */
+  footer .foot-mark { display: inline-flex; align-items: center; gap: 12px; color: var(--ink-2); }
+  footer .foot-mark::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 999px;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+  }
+  footer .foot-copy { margin-left: 20px; color: var(--muted); }
 
   /* ─────────── Responsive ─────────── */
   @media (max-width: 900px) {
@@ -947,41 +923,29 @@
   gtag('config', 'G-5G6NDPED2Z');
 </script>
 
-<style id="metal-overrides">
+<style id="dark-overrides">
+/* near-black with a violet cast — mirrors the LinkedIn banner */
 :root{
-  --bg:#101316;--bg-2:#171b1f;--paper:#161a1e;
-  --ink:#e9ecef;--ink-2:#b4babf;--muted:#838a90;--muted-2:#5f666c;
-  --line:#262b30;--line-2:#353b42;--rule:#3a4147;
-  --pop:#9b7cff;--accent:#9b7cff;--accent-2:#b9a3ff;--accent-tint:#2a3138;
+  --bg:#09090d;--bg-2:#0c0c12;--paper:#0f0f15;
+  --ink:#ececf1;--ink-2:#a9abb6;--muted:#7d7f8c;--muted-2:#55576a;
+  --line:#1c1c26;--line-2:#2a2a37;--rule:#2a2a37;
+  --accent:#9b7cff;--accent-2:#b9a3ff;--accent-tint:#2a2440;
 }
-/* chrome on display italics only — the signature */
-.hero-lede em,.section-head h2 em,#contact h2 em{
-  background:linear-gradient(100deg,#6e7479 0%,#c5cbd0 14%,#ffffff 27%,#a7adb3 41%,#7c8288 53%,#eef1f4 69%,#b4babf 83%,#878d93 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent; font-style:italic;
-}
-/* pop CTA chip with dark text */
-.booking-btn{background:var(--pop);border-color:var(--pop);color:#0b0d10;}
-.booking-btn:hover{background:transparent;color:var(--pop);}
-/* dark-ground structural fixes */
-#contact{background:#13171b;color:#e9ecef;}
-#contact h2{color:#f1f3f5;}
-#contact .contact-row .v{color:#e9ecef;}
-.booking-card{background:#171c21;border-color:#272d33;}
-.booking-card h3{color:#f1f3f5;}
-footer{background:#0c0e11;color:#838a90;border-top-color:#262b30;}
-footer a:hover{color:#e9ecef;}
-/* alignment-sheet hero backdrop */
+/* soft violet glow upper-right, the banner's nebula */
 #hero{position:relative;overflow:hidden;isolation:isolate}
-#hero-sheet{position:absolute;left:0;right:0;bottom:0;width:100%;height:100%;z-index:-1;opacity:.40;-webkit-mask-image:linear-gradient(100deg,transparent 0%,rgba(0,0,0,.35) 26%,#000 62%),linear-gradient(180deg,#000 30%,rgba(0,0,0,.45) 58%,transparent 88%);mask-image:linear-gradient(100deg,transparent 0%,rgba(0,0,0,.35) 26%,#000 62%),linear-gradient(180deg,#000 30%,rgba(0,0,0,.45) 58%,transparent 88%);-webkit-mask-composite:source-in;mask-composite:intersect}
-#hero-sheet::after{content:'';position:absolute;inset:0;background:radial-gradient(680px 380px at 88% 30%,rgba(155,124,255,.16),transparent 64%)}
-#hero .wrap{position:relative;z-index:1}
-@media (max-width:900px){#hero-sheet{opacity:.26}}
+#hero::before{
+  content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(760px 460px at 82% 18%, rgba(155,124,255,.16), transparent 68%),
+    radial-gradient(520px 380px at 100% 70%, rgba(120,96,220,.08), transparent 70%);
+}
 </style>
 </head>
 <body>
 
 <nav>
   <div class="nav-inner">
-    <a href="#" class="brand">Nick Furr<span class="dot">.</span></a>
+    <a href="#" class="eyebrow brand">N. Furr</a>
     <ul class="nav-links">
       <li><a href="#work">Work</a></li>
       <li><a href="#about">About</a></li>
@@ -992,7 +956,6 @@ footer a:hover{color:#e9ecef;}
 
 <!-- ─────────── Hero ─────────── -->
 <section id="hero">
-  <div id="hero-sheet" aria-hidden="true"></div>
   <div class="wrap">
     <div class="hero-grid">
       <h1 class="hero-lede">
@@ -1354,7 +1317,7 @@ footer a:hover{color:#e9ecef;}
 
 <footer>
   <div class="foot-inner">
-    <span>© 2026 Nick Furr — Bay Area</span>
+    <span><span class="foot-mark">NICKFURR.COM</span><span class="foot-copy">© 2026</span></span>
     <div class="foot-links">
       <a href="https://www.linkedin.com/in/nicholas-furr/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://github.com/nick-furr" target="_blank" rel="noopener">GitHub</a>
@@ -1363,9 +1326,6 @@ footer a:hover{color:#e9ecef;}
     </div>
   </div>
 </footer>
-
-<script src="alignment-sheet.js"></script>
-<script>renderAlignmentSheet(document.getElementById('hero-sheet'),{labels:false,preserve:'xMidYMax slice'});</script>
 
 </body>
 </html>
